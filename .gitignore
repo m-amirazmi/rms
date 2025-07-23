@@ -70,3 +70,5 @@ coverage/
 *.launch
 .settings/
 *.sublime-workspace
+
+.env*

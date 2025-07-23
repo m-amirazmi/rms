@@ -1,0 +1,13 @@
+### Get user list
+GET http://localhost:9900/users
+Accept: application/json
+
+### Create a new user
+POST http://localhost:9900/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "john@example.com",
+  "password": "secure123"
+}
