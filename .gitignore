@@ -1,38 +1,72 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Dependencies
-node_modules
-.pnp
+node_modules/
+.pnp/
 .pnp.js
 
-# Local env files
+# Build outputs
+dist/
+build/
+out/
+.next/
+dist-ssr/
+.nitro/
+.tanstack/
+
+# Logs and debugging
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.pid.lock
+*.seed
+report.*.json
+count.txt
+
+# Testing
+coverage/
+.nyc_output/
+
+# Environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.local
 
-# Testing
-coverage
+# Temporary files
+.temp/
+.tmp/
 
 # Turbo
-.turbo
+.turbo/
 
 # Vercel
-.vercel
-
-# Build Outputs
-.next/
-out/
-build
-dist
-
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.vercel/
 
 # Misc
 .DS_Store
 *.pem
+
+# IDEs and editors
+.idea/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
