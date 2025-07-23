@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CommonModule } from './common/common.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
+import { CatalogueModule } from './catalogue/catalogue.module';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
       envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
     CommonModule,
-    UsersModule,
+    CatalogueModule,
   ],
   controllers: [],
   providers: [],

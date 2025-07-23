@@ -5,7 +5,7 @@ import { join } from 'path';
 dotenv.config({ path: join(__dirname, `.env.dev`) });
 
 export default defineConfig({
-  schema: './src/**/*.schema.ts',
+  schema: './src/**/*schema.ts',
   out: './drizzle',
   dialect: 'postgresql',
   dbCredentials: {

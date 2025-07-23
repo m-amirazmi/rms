@@ -3,7 +3,13 @@ import { DATABASE_CONNECTION } from './database-connection';
 import { ConfigService } from '@nestjs/config';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import * as userSchema from '../../users/users.schema';
+
+// SCHEMAS
+import * as catalogueAttributeSchema from 'src/catalogue/attribute/_schema';
+import * as catalogueBrandSchema from 'src/catalogue/brand/_schema';
+import * as catalogueCategorySchema from 'src/catalogue/category/_schema';
+import * as catalogueModelSchema from 'src/catalogue/model/_schema';
+import * as catalogueProductSchema from 'src/catalogue/product/_schema';
 
 @Module({
   providers: [
@@ -15,7 +21,11 @@ import * as userSchema from '../../users/users.schema';
         });
         return drizzle(pool, {
           schema: {
-            ...userSchema,
+            ...catalogueAttributeSchema,
+            ...catalogueBrandSchema,
+            ...catalogueCategorySchema,
+            ...catalogueModelSchema,
+            ...catalogueProductSchema,
           },
         });
       },
