@@ -2,12 +2,13 @@
 GET http://localhost:9900/users
 Accept: application/json
 
-### Create a new user
-POST http://localhost:9900/users
+### Register
+POST http://localhost:9900/auth/register
 Content-Type: application/json
 Accept: application/json
 
 {
   "email": "john@example.com",
-  "password": "secure123"
+  "password": "secure123",
+  "yay": "asikdjl"
 }

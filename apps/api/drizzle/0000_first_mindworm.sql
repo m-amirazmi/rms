@@ -1,5 +1,5 @@
 CREATE TABLE "users" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
 	"email" varchar(255),
 	"phone" varchar(20),
 	"passwordHash" varchar NOT NULL,
