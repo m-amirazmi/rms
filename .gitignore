@@ -71,4 +71,4 @@ coverage/
 .settings/
 *.sublime-workspace
 
-.env*
+.env.*
