@@ -3,6 +3,6 @@ import { UserModule } from './user/user.module';
 import { PermissionModule } from './permission/permission.module';
 
 @Module({
-  imports: [UserModule, PermissionModule]
+  imports: [UserModule, PermissionModule],
 })
 export class CoreModule {}

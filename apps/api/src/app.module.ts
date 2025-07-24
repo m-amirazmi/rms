@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { CommonModule } from './common/common.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { CatalogueModule } from './catalogue/catalogue.module';
 import { TenantModule } from './tenant/tenant.module';
 import { PlatformModule } from './platform/platform.module';
