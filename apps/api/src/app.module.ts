@@ -2,6 +2,10 @@ import { Module } from '@nestjs/common';
 import { CommonModule } from './common/common.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { CatalogueModule } from './catalogue/catalogue.module';
+import { TenantModule } from './tenant/tenant.module';
+import { PlatformModule } from './platform/platform.module';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -11,6 +15,10 @@ import { CatalogueModule } from './catalogue/catalogue.module';
     }),
     CommonModule,
     CatalogueModule,
+    TenantModule,
+    PlatformModule,
+    CoreModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
