@@ -3,12 +3,11 @@ GET http://localhost:9900/users
 Accept: application/json
 
 ### Register
-POST http://localhost:9900/auth/register
+POST http://localhost:9900/users
 Content-Type: application/json
 Accept: application/json
 
 {
-  "email": "john@example.com",
   "password": "secure123",
   "yay": "asikdjl"
 }
