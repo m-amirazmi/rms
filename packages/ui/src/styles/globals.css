@@ -10,7 +10,8 @@
 @source "../**/*.{ts,tsx}";
 
 :root {
-    --background: oklch(1 0 0);
+    /* --background: oklch(1 0 0); */
+    --background:oklch(0.96 0.003 325.6);
     --foreground: oklch(0.145 0.008 326);
     --card: oklch(1 0 0);
     --card-foreground: oklch(0.145 0.008 326);
