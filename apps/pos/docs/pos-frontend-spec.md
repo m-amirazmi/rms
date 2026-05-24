@@ -167,27 +167,27 @@ to this device). No email, no password — staff members only need to exist in t
 ### Tablet Layout
 
 ```
-┌──────────────────────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS                           [KL Branch]  🔔    │
-├──────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│                      Who's serving?                                  │
-│                   Select your name to begin                          │
-│                                                                      │
-│   ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                  │
-│   │     👤      │  │     👤      │  │     👤      │                  │
-│   │             │  │             │  │             │                  │
-│   │   Ahmad     │  │   Nurul     │  │    Hafiz    │                  │
-│   │   Faris     │  │    Ain      │  │    Zain     │                  │
-│   └─────────────┘  └─────────────┘  └─────────────┘                  │
-│   ┌─────────────┐  ┌─────────────┐                                   │
-│   │     👤      │  │     👤      │                                   │
-│   │             │  │             │                                   │
-│   │    Amir     │  │    Siti     │                                   │
-│   │   Hamzah    │  │  Norsiah    │                                   │
-│   └─────────────┘  └─────────────┘                                   │
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────┐
+│  [Logo]  RepairFlow POS                    [KL Branch]  [MY|EN]  [👤] │
+├───────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│                      Who's serving?                                   │
+│                   Select your name to begin                           │
+│                                                                       │
+│   ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                   │
+│   │     👤      │  │     👤      │  │     👤      │                   │
+│   │             │  │             │  │             │                   │
+│   │   Ahmad     │  │   Nurul     │  │    Hafiz    │                   │
+│   │   Faris     │  │    Ain      │  │    Zain     │                   │
+│   └─────────────┘  └─────────────┘  └─────────────┘                   │
+│   ┌─────────────┐  ┌─────────────┐                                    │
+│   │     👤      │  │     👤      │                                    │
+│   │             │  │             │                                    │
+│   │    Amir     │  │    Siti     │                                    │
+│   │   Hamzah    │  │  Norsiah    │                                    │
+│   └─────────────┘  └─────────────┘                                    │
+│                                                                       │
+└───────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Smartphone Layout
@@ -269,9 +269,9 @@ Once a staff member is selected, their name appears in the top bar for the full 
 of the transaction. Tapping their name shows a quick-switch option.
 
 ```
-┌──────────────────────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS         [KL Branch]  👤 Ahmad Faris  ·  🔔   │
-└──────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  RepairFlow POS         [KL Branch]  [MY|EN]  [👤] Ahmad Faris  │
+└─────────────────────────────────────────────────────────────────────────┘
 ```
 
 Tapping `👤 Ahmad Faris` opens a small popover:
@@ -305,27 +305,87 @@ assigned to repair it can be, and often are, different people.
 
 ## Application Shell
 
+### Tablet Layout
+
 ```
-┌──────────────────────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS              [Outlet Name]  [Staff Name]  🔔 │  ← Top Bar (fixed)
-├──────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│                        [ Wizard Content ]                            │  ← Full viewport
-│                                                                      │
-└──────────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]   ✓ > ✓ > ✓ > 3 issues > 2 parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                                │
+│                                     [ Wizard Content ]                                         │
+│                                                                                                │
+├────────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]                                                             [ Continue  ▶ ]   │
+└────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-| Element   | Description                                                                   |
-| --------- | ----------------------------------------------------------------------------- |
-| Top Bar   | Fixed. Displays app logo, current outlet name, and logged-in staff name only. |
-|           | No navigation links. No menu. Purely informational.                           |
-| Main Area | Full-height, full-width wizard content. No sidebar. No footer nav.            |
+### Smartphone Layout
+
+Breadcrumb drops to a dedicated scrollable second row below the top bar.
+
+```
+┌──────────────────────────────────────────────────────────┐
+│  [Logo]                            [KL Branch] [EN] [👤] │
+├──────────────────────────────────────────────────────────┤
+│  ← ✓ > ✓ > ✓ > 3 issues > 2 parts > Customer ... →       │  ← scrollable row
+├──────────────────────────────────────────────────────────┤
+│                                                          │
+│                    [ Wizard Content ]                    │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]                        [ Continue  ▶ ]  │
+├──────────────────────────────────────────────────────────┤
+│  RM 561.00  ·  Step 4 of 6                             ▲ │
+└──────────────────────────────────────────────────────────┘
+```
+
+### Top Bar Elements
+
+| Element         | Description                                                                        |
+| --------------- | ---------------------------------------------------------------------------------- |
+| Logo            | Tapping does nothing — POS is a locked interface                                   |
+| Breadcrumb      | Dynamic, centred (tablet) / scrollable second row (mobile). See Breadcrumb section |
+| Outlet badge    | Current outlet name in a pill/badge. Read-only                                     |
+| Language toggle | `MY \| EN` — switches UI language. Persisted to localStorage                       |
+| Avatar icon     | Tappable — opens staff popover dropdown                                            |
+
+### Avatar Popover
+
+```
+                                              ┌─────────────────────────┐
+                                              │  👤  Ahmad Faris        │
+                                              │  KL Branch              │
+                                              │  ─────────────────────  │
+                                              │  Switch staff member    │
+                                              │  Cancel intake          │
+                                              └─────────────────────────┘
+                                                                      [👤]
+```
+
+| Action              | Behaviour                                                      |
+| ------------------- | -------------------------------------------------------------- |
+| Switch staff member | Returns to Staff Selector screen; wizard state fully preserved |
+| Cancel intake       | Triggers discard confirmation dialog                           |
+
+### Language Toggle
+
+Two-option toggle. Switches all UI labels, placeholders, and system text instantly.
+Staff-selected language is stored in `localStorage` and persists across sessions.
+
+```
+[ MY | EN ]   ←  active option is highlighted
+```
+
+| Code | Language        |
+| ---- | --------------- |
+| `MY` | Bahasa Malaysia |
+| `EN` | English         |
 
 The only intentional exit points from the POS portal are:
 
 - **Successful job creation** → redirects to the Job Confirmation screen
-- **Session timeout** → redirects to the POS login screen
-- **"Cancel Intake"** action → triggers a discard confirmation dialog before exiting
+- **Session timeout** → redirects to the Staff Selector screen
+- **Cancel Intake** via avatar popover → triggers a discard confirmation dialog
 
 ---
 
@@ -345,63 +405,62 @@ flowchart LR
 ### Tablet Landscape — 1024px+ (Primary)
 
 Two-column layout. Wizard content on the left, persistent summary panel on the right.
+Breadcrumb centred in the top bar.
 
 ```
-┌──────────────────────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS              [Outlet Name]  [Staff Name]  🔔 │
-├──────────────────────────────────────────────────────────────────────┤
-│                                    │                                 │
-│                                    │                                 │
-│       Wizard Content               │     Persistent Summary Panel    │
-│       (fills left area)            │     (fixed right, scrollable)   │
-│                                    │                                 │
-│                                    │                                 │
-├──────────────────────────────────────────────────────────────────────┤
-│  [ ◀  Previous ]                                  [ Continue  ▶ ]    │  ← Sticky action bar
-└──────────────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]   ✓ > ✓ > 3 issues > 2 parts > Customer & Tech > Summary   [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│                                              │                                              │
+│       Wizard Content                         │     Persistent Summary Panel                 │
+│       (fills left area)                      │     (fixed right, scrollable)                │
+│                                              │                                              │
+├─────────────────────────────────────────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]                                                           [ Continue  ▶ ]  │
+└─────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ### Tablet Portrait — 768px (Secondary)
 
-Single column. Summary collapses to a tappable info bar at the top of the content area.
-Tapping expands a bottom sheet overlay with full summary details.
+Breadcrumb stays in the top bar but may truncate. Summary collapses to a tappable bar.
 
 ```
-┌──────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS        [Outlet]  [Staff]  🔔 │
-├──────────────────────────────────────────────────────┤
-│  📱 iPhone 16 Pro Max  ·  $561.00  ·  4 of 6   ▾     │  ← Collapsed summary bar (tappable)
-├──────────────────────────────────────────────────────┤
-│                                                      │
-│              Wizard Content (full width)             │
-│                                                      │
-├──────────────────────────────────────────────────────┤
-│  [ ◀  Previous ]                   [ Continue  ▶ ]   │  ← Sticky action bar
-└──────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > ✓ > 3 issues > 2 parts > ...  [KL] [EN] [👤] │
+├───────────────────────────────────────────────────────────┤
+│  📱 iPhone 16 Pro Max  ·  RM 561.00  ·  4 of 6         ▾  │  ← Collapsed summary bar
+├───────────────────────────────────────────────────────────┤
+│                                                           │
+│              Wizard Content (full width)                  │
+│                                                           │
+├───────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]                         [ Continue  ▶ ]  │
+└───────────────────────────────────────────────────────────┘
 ```
 
 ---
 
 ### Smartphone — 390px (On-the-go POS)
 
-Single column. Summary is accessible only via a sticky peek bar at the bottom.
-Tapping the peek bar expands a bottom sheet. No persistent panel.
+Top bar shows logo and right-side icons only. Breadcrumb drops to a dedicated
+horizontally scrollable second row.
 
 ```
-┌─────────────────────────────────┐
-│  [Logo]  POS    [Outlet]  [👤]  │
-├─────────────────────────────────┤
-│                                 │
-│    Wizard Content               │
-│    (full width, scrollable)     │
-│                                 │
-├─────────────────────────────────┤
-│  [ ◀ Prev ]      [ Continue ▶ ] │  ← Sticky action bar
-├─────────────────────────────────┤
-│  $561.00  ·  Step 4 of 6   ▲    │  ← Sticky summary peek bar
-└─────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│  [Logo]                              [KL Branch] [EN] [👤] │
+├────────────────────────────────────────────────────────────┤
+│  ← ✓ > ✓ > 3 issues > 2 parts > Customer & Tech > ... →.   │  ← scrollable breadcrumb row
+├────────────────────────────────────────────────────────────┤
+│                                                            │
+│         Wizard Content (full width, scrollable)            │
+│                                                            │
+├────────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]                          [ Continue  ▶ ]  │
+├────────────────────────────────────────────────────────────┤
+│  RM 561.00  ·  Step 4 of 6                             ▲   │  ← Sticky summary peek bar
+└────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -435,27 +494,106 @@ flowchart LR
 
 ---
 
-## Step Progress Indicator
+## Dynamic Breadcrumb
 
-Displayed below the top bar, above wizard content, across all steps.
-**Non-interactive** — tapping step nodes does nothing.
+Replaces the static step progress indicator entirely. Lives in the top bar on tablet
+and in a dedicated scrollable second row on smartphone. Tapping a completed crumb
+navigates back to that step.
 
-```mermaid
-flowchart LR
-    S1(["✓ 1\nCategory"])
-    S2(["● 2\nBrand &\nModel"])
-    S3(["○ 3\nDiagnostics"])
-    S4(["○ 4\nParts"])
-    S5(["○ 5\nCustomer &\nTech"])
-    S6(["○ 6\nConfirm"])
+### Breadcrumb States
 
-    S1 --- S2 --- S3 --- S4 --- S5 --- S6
+| State                            | Display                                  | Tappable             |
+| -------------------------------- | ---------------------------------------- | -------------------- |
+| Upcoming step — nothing selected | Step label (e.g. `Diagnostic`)           | No — muted           |
+| Current step — active            | Step label, highlighted                  | No                   |
+| Completed, single selection      | `✓` icon                                 | Yes — navigates back |
+| Completed, multi-selection       | Count label (e.g. `3 issues`, `2 parts`) | Yes — navigates back |
+
+### Progression Example
+
+```
+Initial (nothing selected):
+Category  >  Brand  >  Model  >  Diagnostic  >  Parts  >  Customer & Tech  >  Summary
+
+After Step 1 (Smartphone selected):
+✓  >  Brand  >  Model  >  Diagnostic  >  Parts  >  Customer & Tech  >  Summary
+
+After Step 2 (iPhone 13 Pro selected — brand and model both collapse to ✓):
+✓  >  ✓  >  Diagnostic  >  Parts  >  Customer & Tech  >  Summary
+
+After Step 3 (3 issues selected):
+✓  >  ✓  >  3 issues  >  Parts  >  Customer & Tech  >  Summary
+
+After Step 4 (2 parts added):
+✓  >  ✓  >  3 issues  >  2 parts  >  Customer & Tech  >  Summary
+
+After Step 5 (customer and tech assigned):
+✓  >  ✓  >  3 issues  >  2 parts  >  ✓  >  Summary
 ```
 
-> **Legend:** `✓` completed &nbsp;|&nbsp; `●` active &nbsp;|&nbsp; `○` upcoming
+> **Why brand and model both collapse to ✓:**
+> Brand is a filter, not a final decision — the model tap is the decisive action.
+> Collapsing both keeps the breadcrumb compact.
 
-On **smartphone**, the step indicator is condensed to a text label in the top bar
-(e.g. `Step 2 of 6`) to preserve vertical space.
+### Count Label Format
+
+| Step                 | Label format               | Example               |
+| -------------------- | -------------------------- | --------------------- |
+| Step 3 — Diagnostics | `{n} issue` / `{n} issues` | `1 issue`, `3 issues` |
+| Step 4 — Parts       | `{n} part` / `{n} parts`   | `1 part`, `2 parts`   |
+
+### Tappable Completed Crumb Behaviour
+
+Tapping a completed `✓` or count label navigates back to that step. If downstream
+steps have data that may be affected, a cascade warning dialog appears first
+(see Reselection Cascade Rules).
+
+```
+✓  >  ✓  >  3 issues  >  2 parts  >  Customer & Tech  >  Summary
+↑          ↑           ↑
+tappable   tappable    tappable — navigates back to Step 3
+```
+
+### Reselection Cascade Rules
+
+When a completed crumb is tapped and the selection is changed, downstream data is
+evaluated for compatibility and selectively cleared with a warning.
+
+```mermaid
+flowchart TD
+    A[Staff taps completed crumb] --> B{Which step?}
+
+    B -->|Category changed| C[⚠ Warn\nWipe: brand, model, parts\nKeep: issues]
+    B -->|Brand changed| D[⚠ Warn\nWipe: model, parts\nKeep: issues]
+    B -->|Model changed| E[⚠ Warn\nWipe: incompatible parts only\nKeep: issues + compatible parts]
+    B -->|Issues changed| F[No cascade\nIssues do not affect other steps]
+    B -->|Parts changed| G[No cascade\nParts do not affect other steps]
+```
+
+**Cascade warning dialog (example — model change):**
+
+```
+┌──────────────────────────────────────────────────┐
+│  ⚠  Changing the model may affect your parts     │
+│                                                  │
+│  Will be removed (incompatible):                 │
+│  · iPhone 13 Pro Screen                          │
+│                                                  │
+│  Will be kept (compatible or universal):         │
+│  · USB-C Cable                                   │
+│                                                  │
+│  [ Cancel ]              [ Continue anyway ]     │
+└──────────────────────────────────────────────────┘
+```
+
+| Action          | Behaviour                                             |
+| --------------- | ----------------------------------------------------- |
+| Cancel          | Closes dialog; stays on current step; no changes made |
+| Continue anyway | Applies cascade; navigates back to the tapped step    |
+
+> **Note:** Full compatibility data model (which parts are device-specific vs universal)
+> is a backend concern and out of scope for this spec. The UI spec assumes the API
+> returns a compatibility flag per selected part when a reselection occurs.
 
 ---
 
@@ -501,14 +639,14 @@ Applies to steps with multiple inputs, additive actions, or irreversible submiss
 ```
 Tablet
 ┌──────────────────────────────────────────────────────────┐
-│  [ ◀  Previous ]                    [ Continue  ▶ ]      │
+│  [ ◀  Previous ]                        [ Continue  ▶ ]  │
 └──────────────────────────────────────────────────────────┘
 
 Smartphone
 ┌──────────────────────────────────────────────────────────┐
-│  [ ◀  Previous ]              [ Continue  ▶ ]            │
+│  [ ◀  Previous ]                        [ Continue  ▶ ]  │
 ├──────────────────────────────────────────────────────────┤
-│  $561.00  ·  Step 4 of 6                           ▲     │
+│  $561.00  ·  Step 4 of 6                              ▲  │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -516,7 +654,7 @@ On Step 6, Continue is replaced by the primary submission CTA:
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│  [ ◀  Previous ]          [ ✔  Create Repair Job ]       │
+│  [ ◀  Previous ]               [ ✔  Create Repair Job ]  │
 └──────────────────────────────────────────────────────────┘
 ```
 
@@ -564,29 +702,29 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 **Navigation:** Auto-advance on card tap
 
 ```
-┌─────────────────────────────────────────────────────┬─────────────────────────┐
-│  ● ── ○ ── ○ ── ○ ── ○ ── ○                        │  Repair Summary         │
-├─────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                     │  Device        —        │
-│         New Repair Intake                           │  Issues        —        │
-│  Select the device type to get started              │  Parts         —        │
-│                                                     │  Tech          —        │
-│  ┌───────────┐  ┌───────────┐  ┌───────────┐        │  Customer      —        │
-│  │   [icon]  │  │   [icon]  │  │   [icon]  │        │  ─────────────────────  │
-│  │Smartphone │  │  Laptop   │  │  Tablet   │        │  Est. Total    —        │
-│  └───────────┘  └───────────┘  └───────────┘        │                         │
-│  ┌───────────┐  ┌───────────┐  ┌───────────┐        │                         │
-│  │   [icon]  │  │   [icon]  │  │   [icon]  │        │                         │
-│  │ Wearable  │  │  Console  │  │   Other   │        │                         │
-│  └───────────┘  └───────────┘  └───────────┘        │                         │
-│                                                     │                         │
-│  ┌──────────────────────────────────────────────┐   │                         │
-│  │ ⚠  Standard Inspection Fee applies to all    │   │                         │
-│  │    new intakes. Reflected in final estimate. │   │                         │
-│  └──────────────────────────────────────────────┘   │                         │
-│                                                     │                         │
-│  [✕ Cancel Intake]                                  │                         │
-└─────────────────────────────────────────────────────┴─────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  Category > Brand > Model > Diagnostic > Parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├────────────────────────────────────────────────────────────────────────────────┬─────────────────────────────┤
+│                                                                                │  Repair Summary             │
+│                             New Repair Intake                                  │  ─────────────────────────  │
+│                      Select the device type to get started                     │  Parts                   —  │
+│                                                                                │  Tech                    —  │
+│                   ┌───────────┐  ┌───────────┐  ┌───────────┐                  │  Customer                —  │
+│                   │   [icon]  │  │   [icon]  │  │   [icon]  │                  │  ─────────────────────────  │
+│                   │Smartphone │  │  Laptop   │  │  Tablet   │                  │  Est. Total              —  │
+│                   └───────────┘  └───────────┘  └───────────┘                  │                             │
+│                   ┌───────────┐  ┌───────────┐  ┌───────────┐                  │                             │
+│                   │   [icon]  │  │   [icon]  │  │   [icon]  │                  │                             │
+│                   │ Wearable  │  │  Console  │  │   Other   │                  │                             │
+│                   └───────────┘  └───────────┘  └───────────┘                  │                             │
+│                                                                                │                             │
+│                 ┌──────────────────────────────────────────────┐               │                             │
+│                 │ ⚠  Standard Inspection Fee applies to all    │               │                             │
+│                 │    new intakes. Reflected in final estimate. │               │                             │
+│                 └──────────────────────────────────────────────┘               │                             │
+│                                                                                │                             │
+│  [✕ Cancel Intake]                                                             │                             │
+└────────────────────────────────────────────────────────────────────────────────┴─────────────────────────────┘
 ```
 
 ### UI Components
@@ -611,51 +749,82 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 **Navigation:** Auto-advance on model card tap
 
 ```
-┌─────────────────────────────────────────────────────┬─────────────────────────┐
-│  ✓ ── ● ── ○ ── ○ ── ○ ── ○                        │  Repair Summary         │
-├─────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                     │  📱 —                   │
-│  Identify the Device                                │  Smartphone             │
-│                                                     │  Issues        —        │
-│  [ 🔍  Search brand, model or part number...   ]    │  Parts         —        │
-│                                                     │  Tech          —        │
-│  Select Brand                                       │  Customer      —        │
-│  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐       │  ─────────────────────  │
-│  │APPLE │ │SAMSG │ │GOOGL │ │HUAWEI│ │  +  │        │  Est. Total    —        │
-│  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘       │                         │
-│                               ← scrollable →        │                         │
-│                                                     │                         │
-│  Popular Models              [ Brand: Apple  × ]    │                         │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐             │                         │
-│  │ [image]  │ │ [image]  │ │ [image]  │             │                         │
-│  │iPhone 16 │ │iPhone 16 │ │iPhone 15 │             │                         │
-│  │ Pro Max  │ │   Pro    │ │ Pro Max  │             │                         │
-│  └──────────┘ └──────────┘ └──────────┘             │                         │
-│                                                     │                         │
-│  ┌────────────────────────────────────┐             │                         │
-│  │  Can't find it? Enter manually →  │              │                         │
-│  └────────────────────────────────────┘             │                         │
-│                                                     │                         │
-│  [✕ Cancel Intake]                                  │                         │
-└─────────────────────────────────────────────────────┴─────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > Brand & Model > Diagnostic > Parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├───────────────────────────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                                           │  Repair Summary           │
+│                  Identify the Device                                      │  ─────────────────────    │
+│                                                                           │  📱 —                     │
+│                  [ 🔍  Search brand, model or part number...   ]          │  Smartphone               │
+│                                                                           │  Issues        —          │
+│                  Select Brand                                             │  Parts         —          │
+│                  ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐ ┌──────┐             │  Tech          —          │
+│                  │APPLE │ │SAMSG │ │GOOGL │ │HUAWEI│ │  +   │             │  Customer      —          │
+│                  └──────┘ └──────┘ └──────┘ └──────┘ └──────┘             │  ─────────────────────    │
+│                                               ← scrollable →              │  Est. Total    —          │
+│                                                                           │                           │
+│  [✕ Cancel Intake]                                                        │                           │
+└───────────────────────────────────────────────────────────────────────────┴───────────────────────────┘
+```
+
+After tapping a brand — brand row collapses, model grid expands to fill the space:
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > Brand & Model > Diagnostic > Parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                      │  Repair Summary           │
+│  Identify the Device                                 │  ─────────────────────    │
+│                                                      │  📱 —                     │
+│  [ 🔍  Search brand, model or part number...   ]    │  Smartphone               │
+│                                                      │                           │
+│  [ 🍎 Apple  × ]  Change brand                      │                           │  ← collapsed badge
+│  ─────────────────────────────────────────────────  │                           │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │                           │
+│  │ [image]  │ │ [image]  │ │ [image]  │ │[image] │ │                           │
+│  │iPhone 16 │ │iPhone 16 │ │iPhone 15 │ │iPhone  │ │                           │
+│  │ Pro Max  │ │   Pro    │ │ Pro Max  │ │   14   │ │                           │
+│  └──────────┘ └──────────┘ └──────────┘ └────────┘ │                           │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌────────┐ │                           │
+│  │ [image]  │ │ [image]  │ │ [image]  │ │[image] │ │                           │
+│  │iPhone 13 │ │iPhone 13 │ │  iPad    │ │MacBook │ │                           │
+│  │  Pro Max │ │   Pro    │ │   Pro    │ │  Pro   │ │                           │
+│  └──────────┘ └──────────┘ └──────────┘ └────────┘ │                           │
+│                               ← scrollable grid →   │                           │
+│                                                      │                           │
+│  ┌────────────────────────────────────┐             │                           │
+│  │  Can't find it? Enter manually →  │             │                           │
+│  └────────────────────────────────────┘             │                           │
+│                                                      │                           │
+│  [✕ Cancel Intake]                                  │                           │
+└─────────────────────────────────────────────────────┴───────────────────────────┘
+```
+
+After model tapped — breadcrumb updates, auto-advance begins:
+
+```
+[Logo]  ✓ > iPhone 16 Pro Max > Diagnostic > Parts > Customer & Tech > Summary  ...
 ```
 
 ### UI Components
 
-| Component           | Description                                                        |
-| ------------------- | ------------------------------------------------------------------ |
-| Search bar          | Full-text search across all brands and models                      |
-| Brand selector      | Horizontally scrollable row of brand logo tiles; large tap targets |
-| Popular Models grid | Filtered by selected brand; device image, name, variant            |
-| Active brand badge  | Appears above model grid; tapping × clears brand filter            |
-| "Can't find it?"    | Opens inline text input for manual device name entry               |
+| Component        | Description                                                                           |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| Search bar       | Full-text search across all brands and models; always visible                         |
+| Brand selector   | Horizontally scrollable row; collapses to badge on brand tap                          |
+| Brand badge      | `[ 🏷 BrandName × ]  Change brand` — tapping × or Change re-expands row, clears model |
+| Model grid       | Expands to fill full width after brand collapses; scrollable                          |
+| Model card       | Device image, name, variant tag; min 100px height for touch                           |
+| "Can't find it?" | Inline text input for manual device name; appears below model grid                    |
 
 ### Behaviour
 
-- Brand tap filters model grid; does **not** auto-advance (brand is a filter, not a decision)
-- Model card tap → highlights → undo toast → auto-advance after 3s
-- Manual entry text field appears inline; confirming counts as a model selection
-- Summary panel updates device name immediately on model tap
+- Brand tap → brand row animates out → brand badge appears → model grid expands
+- Tapping `×` on brand badge or "Change brand" → model grid hides → brand row re-expands → model selection cleared
+- Search bar overrides the brand/model flow entirely — results shown as a flat list
+- Model tap → highlights briefly → undo toast → auto-advance after 3s
+- Breadcrumb updates from `Brand & Model` to the selected model name on tap
+- Manual entry confirms as a model selection and triggers auto-advance
 
 ---
 
@@ -664,39 +833,39 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 **Navigation:** Sticky action bar (multi-select, no clear "done" signal)
 
 ```
-┌─────────────────────────────────────────────────────┬─────────────────────────┐
-│  ✓ ── ✓ ── ● ── ○ ── ○ ── ○                        │  Repair Summary         │
-├─────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                     │  📱 iPhone 16 Pro Max   │
-│  Device Diagnostics                                 │  Smartphone             │
-│                                                     │                         │
-│  ┌──────────────────────────────────────────────┐   │  Issues                 │
-│  │ ℹ  Inspect device with the customer present. │   │  · Display/Screen ←live │
-│  │    Select all visible and reported issues.   │   │  · Battery        ←live │
-│  └──────────────────────────────────────────────┘   │                         │
-│                                                     │  Parts         —        │
-│  Customer Issues      [ iPhone 16 Pro Max  × ]      │  Tech          —        │
-│                                                     │  Customer      —        │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐    │  ─────────────────────  │
-│  │ [icon]  │ │ [icon]  │ │ [icon]  │ │ [icon]  │    │  Est. Total    —        │
-│  │ Display │ │ Battery │ │Charging │ │  Audio  │    │                         │
-│  │ ✓ active│ │ ✓ active│ │  Port   │ │         │    │                         │
-│  └─────────┘ └─────────┘ └─────────┘ └─────────┘    │                         │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐    │                         │
-│  │ [icon]  │ │ [icon]  │ │ [icon]  │ │ [icon]  │    │                         │
-│  │ Camera  │ │ Network │ │  Water  │ │  Other  │    │                         │
-│  │         │ │         │ │ Damage  │ │         │    │                         │
-│  └─────────┘ └─────────┘ └─────────┘ └─────────┘    │                         │
-│                                                     │                         │
-│  Other Issue / Specific Notes                       │                         │
-│  ┌──────────────────────────────────────────────┐   │                         │
-│  │  Describe additional issues here...          │   │                         │
-│  └──────────────────────────────────────────────┘   │                         │
-│                                                     │                         │
-│  [✕ Cancel]                                         │                         │
-├─────────────────────────────────────────────────────┴─────────────────────────┤
-│  [ ◀  Previous ]                                        [ Continue  ▶ ]       │
-└───────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > iPhone 16 Pro Max > Diagnostic > Parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                      │  Repair Summary           │
+│  Device Diagnostics                                  │  ─────────────────────    │
+│                                                      │                           │
+│  ┌──────────────────────────────────────────────┐   │  Issues                   │
+│  │ ℹ  Inspect device with the customer present. │   │  · Display/Screen ←live   │
+│  │    Select all visible and reported issues.   │   │  · Battery        ←live   │
+│  └──────────────────────────────────────────────┘   │                           │
+│                                                      │  Parts         —          │
+│  Customer Issues      [ iPhone 16 Pro Max  × ]      │  Tech          —          │
+│                                                      │  Customer      —          │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐  │  ─────────────────────    │
+│  │ [icon]  │ │ [icon]  │ │ [icon]  │ │ [icon]  │  │  Est. Total    —          │
+│  │ Display │ │ Battery │ │Charging │ │  Audio  │  │                           │
+│  │ ✓ active│ │ ✓ active│ │  Port   │ │         │  │                           │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘  │                           │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐  │                           │
+│  │ [icon]  │ │ [icon]  │ │ [icon]  │ │ [icon]  │  │                           │
+│  │ Camera  │ │ Network │ │  Water  │ │  Other  │  │                           │
+│  │         │ │         │ │ Damage  │ │         │  │                           │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘  │                           │
+│                                                      │                           │
+│  Other Issue / Specific Notes                        │                           │
+│  ┌──────────────────────────────────────────────┐   │                           │
+│  │  Describe additional issues here...          │   │                           │
+│  └──────────────────────────────────────────────┘   │                           │
+│                                                      │                           │
+│  [✕ Cancel]                                         │                           │
+├─────────────────────────────────────────────────────┴───────────────────────────┤
+│  [ ◀  Previous ]                                        [ Continue  ▶ ]         │
+└──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### UI Components
@@ -721,24 +890,25 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 **Navigation:** Sticky action bar (additive, user decides when list is complete)
 
 ```
-┌──────────────────────────────────────────────────────┬─────────────────────────┐
-│  ✓ ── ✓ ── ✓ ── ● ── ○ ── ○                         │  Repair Summary         │
-├──────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                      │  📱 iPhone 16 Pro Max   │
-│  Select Parts                                        │  Smartphone             │
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > ✓ > 3 issues > Parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬─────────────────────────────┤
+│                                                      │  Repair Summary             │
+│  Select Parts                                        │  ─────────────────────────  │
+│                                                      │  📱 iPhone 16 Pro Max       │
 │                                                      │                         │
-│  [ 🔍  Search parts or SKU...                  ]     │  Issues                 │
+│  [ 🔍  Search parts or SKU...                  ]    │  Issues                 │
 │                                                      │  · Display/Screen       │
 │  ┌────────────────────────────────────────────────┐  │  · Battery              │
 │  │ iPhone 16 Pro Screen    Compatible  $320  [+]  │  │                         │
 │  │ Stock: 4                                       │  │  Parts                  │
-│  ├────────────────────────────────────────────────┤  │  · Screen  1×  $320 ←   │
+│  ├────────────────────────────────────────────────┤  │  · Screen  1×  $320 ←  │
 │  │ iPhone 16 Battery       Compatible   $85  [+]  │  │  · Battery 1×   $85 ←  │
 │  │ Stock: 7                                       │  │                         │
 │  ├────────────────────────────────────────────────┤  │  Tech          —        │
 │  │ USB-C Port Module       Generic      $45  [+]  │  │  Customer      —        │
 │  │ Stock: 2                                       │  │  ─────────────────────  │
-│  └────────────────────────────────────────────────┘  │  Est. Total  $561.00 ←  │
+│  └────────────────────────────────────────────────┘  │  Est. Total  $561.00 ← │
 │                                                      │                         │
 │  Selected Parts                                      │                         │
 │  ┌────────────────────────────────────────────────┐  │                         │
@@ -751,10 +921,10 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 │  │ Subtotal                               $405.00 │  │                         │
 │  └────────────────────────────────────────────────┘  │                         │
 │                                                      │                         │
-│  [✕ Cancel]                                          │                         │
-├──────────────────────────────────────────────────────┴─────────────────────────┤
-│  [ ◀  Previous ]                                        [ Continue  ▶ ]        │
-└────────────────────────────────────────────────────────────────────────────────┘
+│  [✕ Cancel]                                         │                         │
+├─────────────────────────────────────────────────────┴─────────────────────────┤
+│  [ ◀  Previous ]                                        [ Continue  ▶ ]       │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### UI Components
@@ -778,82 +948,164 @@ Collapses to a bar/sheet on tablet portrait and smartphone.
 
 ## Step 5 — Customer & Technician
 
-**Navigation:** Sticky action bar (two required fields of different types)
+**Navigation:** Sticky action bar — Continue activates once both customer and technician
+are selected (both collapsed to badges).
 
-Customer is the **primary** action — full search panel. Technician is **secondary** — compact
-dropdown below. Both must be completed before Continue is enabled.
+Uses the same **select → collapse → next reveals** pattern as Step 2.
+Customer is resolved first; once collapsed, the technician list expands to fill the space.
 
-```
-┌──────────────────────────────────────────────────────┬─────────────────────────┐
-│  ✓ ── ✓ ── ✓ ── ✓ ── ● ── ○                         │  Repair Summary         │
-├──────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                      │  📱 iPhone 16 Pro Max   │
-│  Customer & Technician                               │  Smartphone             │
-│                                                      │                         │
-│  Find Customer                                       │  Issues                 │
-│  [ 🔍  Search name, phone, or email...         ]     │  · Display/Screen       │
-│                                                      │  · Battery              │
-│  ┌──────────────────────────────────────────────┐    │                         │
-│  │  👤  Ali Evans                               │    │  Parts                  │
-│  │      +601X-XXX XXXX  ·  3 previous repairs   │    │  · Screen      $320     │
-│  └──────────────────────────────────────────────┘    │  · Battery      $85     │
-│  ┌──────────────────────────────────────────────┐    │                         │
-│  │  👤  Alice Tan                               │    │  Tech          — ←live  │
-│  │      +601X-XXX XXXX  ·  1 previous repair    │    │  Customer      — ←live  │
-│  └──────────────────────────────────────────────┘    │  ─────────────────────  │
-│                                                      │  Est. Total  $561.00    │
-│  [ + Create New Customer ]                           │                         │
-│                                                      │                         │
-│  ┌──────────────────────────────────────────────┐    │                         │
-│  │ 🔵  Unlock Loyalty Insights with Service     │    │                         │
-│  │     History — link a profile to view         │    │                         │
-│  │     repair history & loyalty data.           │    │                         │
-│  └──────────────────────────────────────────────┘    │                         │
-│                                                      │                         │
-│  ──────────────────────────────────────────────      │                         │
-│                                                      │                         │
-│  Assign Technician                                   │                         │
-│  [ 👤  Select technician...                    ▾ ]   │                         │
-│                                                      │                         │
-│  [✕ Cancel]                                          │                         │
-├──────────────────────────────────────────────────────┴─────────────────────────┤
-│  [ ◀  Previous ]                                        [ Continue  ▶ ]        │
-└────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### Technician Dropdown — Expanded
+### State 1 — Initial (nothing selected)
 
 ```
-  [ 👤  Select technician...                      ▾ ]
-  ┌─────────────────────────────────────────────────┐
-  │  👤  Ahmad Faris                                │
-  │      Senior Tech  ·  2 active jobs    🟡 Busy   │
-  │                                                 │
-  │  👤  Nurul Ain                                  │
-  │      Junior Tech  ·  1 active job     🟡 Busy   │
-  │                                                 │
-  │  👤  Hafiz Zain                                 │
-  │      Senior Tech  ·  0 active jobs  🟢 Available│
-  └─────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > iPhone 16 Pro Max > 3 issues > 2 parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                      │  Repair Summary           │
+│  Customer & Technician                               │  ─────────────────────    │
+│                                                      │  📱 iPhone 16 Pro Max     │
+│  Find Customer                                       │                           │
+│  [ 🔍  Search name, phone, or email...         ]    │  Issues                   │
+│                                                      │  · Display/Screen         │
+│  ┌──────────────────────────────────────────────┐   │  · Battery                │
+│  │  👤  Ali Evans                               │   │                           │
+│  │      +601X-XXX XXXX  ·  3 previous repairs  │   │  Parts                    │
+│  └──────────────────────────────────────────────┘   │  · Screen      $320       │
+│  ┌──────────────────────────────────────────────┐   │  · Battery      $85       │
+│  │  👤  Alice Tan                               │   │                           │
+│  │      +601X-XXX XXXX  ·  1 previous repair   │   │  Tech          —          │
+│  └──────────────────────────────────────────────┘   │  Customer      —          │
+│                                                      │  ─────────────────────    │
+│  [ + Create New Customer ]                          │  Est. Total  $561.00      │
+│                                                      │                           │
+│  ┌──────────────────────────────────────────────┐   │                           │
+│  │ 🔵  Unlock Loyalty Insights with Service     │   │                           │
+│  │     History — link a profile to view         │   │                           │
+│  │     repair history & loyalty data.           │   │                           │
+│  └──────────────────────────────────────────────┘   │                           │
+│                                                      │                           │
+│  Assign Technician                                   │                           │
+│  (visible but muted — awaiting customer selection)   │                           │
+│                                                      │                           │
+│  [✕ Cancel]                                         │                           │
+├─────────────────────────────────────────────────────┴───────────────────────────┤
+│  [ ◀  Previous ]                                   [ Continue  ▶ ] (disabled)   │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### State 2 — Customer selected, technician list expands
+
+Customer search collapses to a badge. Technician list expands inline to fill the freed space.
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > iPhone 16 Pro Max > 3 issues > 2 parts > Customer & Tech > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                      │  Repair Summary           │
+│  Customer & Technician                               │  ─────────────────────    │
+│                                                      │  📱 iPhone 16 Pro Max     │
+│  [ 👤 Ali Evans · +601X-XXX  ×  Change ]            │                           │  ← collapsed badge
+│  ──────────────────────────────────────────────────  │  Issues                   │
+│                                                      │  · Display/Screen         │
+│  Assign Technician                                   │  · Battery                │
+│  ┌──────────────────────────────────────────────┐   │                           │
+│  │  👤  Ahmad Faris                             │   │  Parts                    │
+│  │      Senior Tech  ·  2 active jobs   🟡 Busy │   │  · Screen      $320       │
+│  ├──────────────────────────────────────────────┤   │  · Battery      $85       │
+│  │  👤  Nurul Ain                               │   │                           │
+│  │      Junior Tech  ·  1 active job    🟡 Busy │   │  Tech          —          │
+│  ├──────────────────────────────────────────────┤   │  Customer  Ali Evans ←    │
+│  │  👤  Hafiz Zain                              │   │  ─────────────────────    │
+│  │      Senior Tech  ·  0 jobs      🟢 Available│   │  Est. Total  $561.00      │
+│  └──────────────────────────────────────────────┘   │                           │
+│              ← scrollable list →                    │                           │
+│                                                      │                           │
+│  [✕ Cancel]                                         │                           │
+├─────────────────────────────────────────────────────┴───────────────────────────┤
+│  [ ◀  Previous ]                                   [ Continue  ▶ ] (disabled)   │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### State 3 — Both selected, Continue activates
+
+Technician collapses to a badge. Continue becomes active immediately.
+
+```
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > iPhone 16 Pro Max > 3 issues > 2 parts > ✓ > Summary  [KL Branch] [MY|EN] [👤] │
+├─────────────────────────────────────────────────────┬───────────────────────────┤
+│                                                      │  Repair Summary           │
+│  Customer & Technician                               │  ─────────────────────    │
+│                                                      │  📱 iPhone 16 Pro Max     │
+│  [ 👤 Ali Evans · +601X-XXX  ×  Change ]            │                           │
+│  [ 👤 Hafiz Zain · Senior Tech  ×  Change ]         │  Issues                   │
+│                                                      │  · Display/Screen         │
+│  ┌──────────────────────────────────────────────┐   │  · Battery                │
+│  │ 🔵  Unlock Loyalty Insights with Service     │   │                           │
+│  │     History — link a profile to view         │   │  Parts                    │
+│  │     repair history & loyalty data.           │   │  · Screen      $320       │
+│  └──────────────────────────────────────────────┘   │  · Battery      $85       │
+│                                                      │                           │
+│  [✕ Cancel]                                         │  Tech    Hafiz Zain ←     │
+│                                                      │  Customer  Ali Evans      │
+│                                                      │  ─────────────────────    │
+│                                                      │  Est. Total  $561.00      │
+├─────────────────────────────────────────────────────┴───────────────────────────┤
+│  [ ◀  Previous ]                                    [ Continue  ▶ ] (active)    │
+└──────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Smartphone — Technician as scrollable inline list
+
+Same collapse pattern. Technician list is a vertically scrollable inline list,
+not a dropdown. Customer and tech badges stack vertically when both selected.
+
+```
+┌─────────────────────────────────────────────────────────┐
+│  [Logo]                              [KL Branch] [EN] [👤] │
+├─────────────────────────────────────────────────────────┤
+│  ← ✓ > iPhone 16 Pro Max > 3 issues > 2 parts > ... →  │
+├─────────────────────────────────────────────────────────┤
+│                                                          │
+│  [ 👤 Ali Evans · +601X-XXX  ×  Change ]                │  ← customer badge
+│  ────────────────────────────────────────────────────    │
+│                                                          │
+│  Assign Technician                                       │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │  👤  Ahmad Faris  Senior · 2 jobs  🟡            │   │
+│  ├──────────────────────────────────────────────────┤   │
+│  │  👤  Nurul Ain    Junior · 1 job   🟡            │   │
+│  ├──────────────────────────────────────────────────┤   │
+│  │  👤  Hafiz Zain   Senior · 0 jobs  🟢  ✓ selected│   │
+│  └──────────────────────────────────────────────────┘   │
+│                  ← scrollable →                          │
+│                                                          │
+├──────────────────────────────────────────────────────────┤
+│  [ ◀  Previous ]              [ Continue  ▶ ]           │
+├──────────────────────────────────────────────────────────┤
+│  RM 561.00  ·  Step 5 of 6                         ▲   │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ### UI Components
 
-| Component       | Description                                                          |
-| --------------- | -------------------------------------------------------------------- |
-| Customer search | Debounced lookup (300ms) by name, phone, or email                    |
-| Customer cards  | Name, contact info, past repair count; large tap targets             |
-| Create New      | Secondary CTA; triggers slide-over (tablet) or bottom sheet (mobile) |
-| Upsell banner   | Dismissible loyalty insights promo card                              |
-| Tech dropdown   | Rich dropdown showing name, role, workload, availability badge       |
+| Component          | Description                                                                 |
+| ------------------ | --------------------------------------------------------------------------- |
+| Customer search    | Debounced 300ms lookup; visible only before customer is selected            |
+| Customer badge     | `[ 👤 Name · Phone  ×  Change ]` — tapping × or Change re-expands search    |
+| Create New         | Visible below search; triggers slide-over (tablet) or bottom sheet (mobile) |
+| Upsell banner      | Dismissible; shown in State 3 when space is available                       |
+| Technician list    | Inline scrollable list — tablet and mobile; no dropdown                     |
+| Technician badge   | `[ 👤 Name · Role  ×  Change ]` — tapping re-expands list                   |
+| Availability badge | 🟢 Available / 🟡 Busy / 🔴 Unavailable per technician row                  |
 
 ### Behaviour
 
-- Search triggers after 300ms debounce with loading spinner
-- Tapping a customer card selects and highlights it; summary panel updates immediately
-- Creating a new customer opens the new customer flow (see below); on save, auto-assigns
-- Technician selection updates the summary panel immediately
-- Both customer and technician are required before Continue is enabled
+- Customer must be selected before technician list becomes interactive
+- Technician list is muted/disabled in State 1; activates after customer collapses
+- Tapping `×` or `Change` on either badge re-expands that section; the other stays collapsed
+- If customer is changed, technician selection is preserved (no cascade between these two)
+- Both badges must be present for Continue to activate
+- Summary panel updates customer and tech fields live as each is selected
 
 ---
 
@@ -866,11 +1118,11 @@ The summary panel has already shown all information progressively. Step 6 serves
 sign-off before tapping Create.
 
 ```
-┌──────────────────────────────────────────────────────┬─────────────────────────┐
-│  ✓ ── ✓ ── ✓ ── ✓ ── ✓ ── ●                         │  Repair Summary         │
-├──────────────────────────────────────────────────────┤  ─────────────────────  │
-│                                                      │  📱 iPhone 16 Pro Max   │
-│  Final Invoice                                       │  Smartphone             │
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [Logo]  ✓ > ✓ > 3 issues > 2 parts > ✓ > Summary  [KL Branch] [MY|EN] [👤]   │
+├─────────────────────────────────────────────────────┬─────────────────────────────┤
+│                                                      │  Repair Summary             │
+│  Final Invoice                                       │  ─────────────────────────  │
 │                                                      │                         │
 │  ┌────────────────────────────────────────────────┐  │  Issues                 │
 │  │ iPhone 16 Pro Screen       1×      RM 320.00   │  │  · Display/Screen       │
@@ -883,10 +1135,10 @@ sign-off before tapping Create.
 │  │ Grand Total                        RM 514.10   │  │  Tech     Hafiz Zain    │
 │  └────────────────────────────────────────────────┘  │  Customer  Ali Evans    │
 │                                                      │  ─────────────────────  │
-│  [✕ Cancel]                                          │  Est. Total  RM 514.10  │
-├──────────────────────────────────────────────────────┴─────────────────────────┤
-│  [ ◀  Previous ]                         [ ✔  Create Repair Job ]              │
-└────────────────────────────────────────────────────────────────────────────────┘
+│  [✕ Cancel]                                         │  Est. Total  RM 514.10  │
+├─────────────────────────────────────────────────────┴─────────────────────────┤
+│  [ ◀  Previous ]                         [ ✔  Create Repair Job ]             │
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### UI Components
@@ -917,21 +1169,21 @@ auto-assigned, and the summary panel returns with the customer name populated.
 
 ```
 ┌─────────────────────────────────────────────────────┬──────────────────────────┐
-│  Step 5 content                                     │  ✕  New Customer         │
-│  (dimmed, non-interactive)                          │  ──────────────────────  │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  Full Name               │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  [ __________________ ]  │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │                          │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │  Phone                   │
-│                                                     │  [ __________________ ]  │
-│                                                     │                          │
-│                                                     │  Email                   │
-│                                                     │  [ __________________ ]  │
-│                                                     │                          │
-│                                                     │  Notes                   │
-│                                                     │  [ __________________ ]  │
-│                                                     │                          │
-│                                                     │  [ Cancel ]  [ Save ✔ ]  │
+│  Step 5 content                                      │  ✕  New Customer         │
+│  (dimmed, non-interactive)                           │  ──────────────────────  │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │  Full Name               │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │  [ __________________ ]  │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │                          │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │  Phone                   │
+│                                                      │  [ __________________ ]  │
+│                                                      │                          │
+│                                                      │  Email                   │
+│                                                      │  [ __________________ ]  │
+│                                                      │                          │
+│                                                      │  Notes                   │
+│                                                      │  [ __________________ ]  │
+│                                                      │                          │
+│                                                      │  [ Cancel ]  [ Save ✔ ]  │
 └─────────────────────────────────────────────────────┴──────────────────────────┘
 ```
 
@@ -943,10 +1195,10 @@ Background dims. Dismissible by tapping outside or the × button.
 ```
 ┌─────────────────────────────────┐
 │  (Step 5 dimmed behind sheet)   │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
-│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░   │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
 ├─────────────────────────────────┤
-│  ╌╌╌  New Customer          ✕   │  ← bottom sheet handle
+│  ╌╌╌  New Customer          ✕  │  ← bottom sheet handle
 │  ─────────────────────────────  │
 │  Full Name  [ ________________] │
 │  Phone      [ ________________] │
@@ -986,27 +1238,27 @@ right. Staff shows or hands the device to the customer so they can scan and foll
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│  [Logo]  RepairFlow POS              [Outlet Name]  [Staff Name]  🔔 │
+│  [Logo]  RepairFlow POS         [Outlet Name]  [MY|EN]  [👤] │
 ├──────────────────────────────────────────────────────────────────────┤
-│                                                                      │
-│  ✅  Repair Job Created                                              │
-│                                                                      │
-│  ┌─────────────────────────────────┐  ┌──────────────────────────┐   │
-│  │  Job ID     #RJ-20251024-0042   │  │                          │   │
-│  │  Device     iPhone 16 Pro Max   │  │     ┌──────────────┐     │   │
-│  │  Customer   Ali Evans           │  │     │              │     │   │
-│  │  Tech       Hafiz Zain          │  │     │   QR CODE    │     │   │
-│  │  Pickup     Oct 24, 2025        │  │     │              │     │   │
-│  │                                 │  │     └──────────────┘     │   │
-│  │  Issues                         │  │                          │   │
-│  │  · Display/Screen               │  │  Scan to track your      │   │
-│  │  · Battery                      │  │  repair on WhatsApp      │   │
-│  │                                 │  │                          │   │
-│  │  Grand Total     RM 514.10      │  │  #RJ-20251024-0042       │   │
-│  └─────────────────────────────────┘  └──────────────────────────┘   │
-│                                                                      │
+│                                                                       │
+│  ✅  Repair Job Created                                               │
+│                                                                       │
+│  ┌─────────────────────────────────┐  ┌──────────────────────────┐  │
+│  │  Job ID     #RJ-20251024-0042   │  │                          │  │
+│  │  Device     iPhone 16 Pro Max   │  │     ┌──────────────┐     │  │
+│  │  Customer   Ali Evans           │  │     │              │     │  │
+│  │  Tech       Hafiz Zain          │  │     │   QR CODE    │     │  │
+│  │  Pickup     Oct 24, 2025        │  │     │              │     │  │
+│  │                                 │  │     └──────────────┘     │  │
+│  │  Issues                         │  │                          │  │
+│  │  · Display/Screen               │  │  Scan to track your      │  │
+│  │  · Battery                      │  │  repair on WhatsApp      │  │
+│  │                                 │  │                          │  │
+│  │  Grand Total     RM 514.10      │  │  #RJ-20251024-0042       │  │
+│  └─────────────────────────────────┘  └──────────────────────────┘  │
+│                                                                       │
 │     [ 🖨  Print Receipt ]              [ + New Repair Intake ]       │
-│                                                                      │
+│                                                                       │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -1087,7 +1339,7 @@ Decoded message:
 │                                                                 │
 │  Final example:                                                 │
 │  https://wa.me/60123456789                                      │
-│    ?text=Hi%2C+I+want+to+get+repair+progress                    │
+│    ?text=Hi%2C+I+want+to+get+repair+progress                   │
 │         +for+job+%23RJ-20251024-0042                            │
 └─────────────────────────────────────────────────────────────────┘
 ```
@@ -1153,15 +1405,15 @@ Full-page professional invoice. Suitable for filing, warranty claims, or busines
 Triggered via browser print dialog (`window.print()`) with a dedicated print stylesheet.
 
 ```
-┌───────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────┐
 │                                                   │  ← A4 (210mm × 297mm)
-│  [LOGO]              RepairFlow                   │
-│  ───────────────────────────────────────────────  │
-│  Outlet Name         Tel: +60X-XXX XXXX           │
+│  [LOGO]              RepairFlow                  │
+│  ─────────────────────────────────────────────── │
+│  Outlet Name         Tel: +60X-XXX XXXX          │
 │  123 Jalan Example   outlet@repairflow.com        │
 │  Kuala Lumpur                                     │
 │                                                   │
-│  ───────────────────────────────────────────────  │
+│  ─────────────────────────────────────────────── │
 │  REPAIR INVOICE                                   │
 │                                                   │
 │  Job ID     #RJ-20251024-0042                     │
@@ -1178,31 +1430,31 @@ Triggered via browser print dialog (`window.print()`) with a dedicated print sty
 │  · Display/Screen                                 │
 │  · Battery                                        │
 │                                                   │
-│  ───────────────────────────────────────────────  │
+│  ─────────────────────────────────────────────── │
 │  Parts & Labour                                   │
 │                                                   │
-│  iPhone 16 Pro Screen      1×         RM 320.00   │
-│  iPhone 16 Battery         1×         RM  85.00   │
+│  iPhone 16 Pro Screen      1×       RM 320.00    │
+│  iPhone 16 Battery         1×        RM  85.00   │
 │  Labour Fee                           RM  80.00   │
-│  ───────────────────────────────────────────────  │
+│  ─────────────────────────────────────────────── │
 │  Subtotal                             RM 485.00   │
-│  Tax (6% SST)                         RM  29.10   │
-│  ───────────────────────────────────────────────  │
+│  Tax (6% SST)                          RM  29.10  │
+│  ─────────────────────────────────────────────── │
 │  GRAND TOTAL                          RM 514.10   │
 │                                                   │
-│  ───────────────────────────────────────────────  │
+│  ─────────────────────────────────────────────── │
 │  Track your repair progress via WhatsApp:         │
 │                                                   │
 │  ┌──────────┐  Scan this QR code or send          │
-│  │          │  "Hi, I want to get repair          │
+│  │          │  "Hi, I want to get repair           │
 │  │ QR CODE  │  progress for job                   │
 │  │  25×25mm │  #RJ-20251024-0042"                 │
 │  └──────────┘  to +60X-XXX XXXX on WhatsApp       │
 │                                                   │
-│  ───────────────────────────────────────────────  │
+│  ─────────────────────────────────────────────── │
 │  Thank you for choosing RepairFlow.               │
 │  For enquiries: outlet@repairflow.com             │
-└───────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────┘
 ```
 
 | Property | Value                                           |

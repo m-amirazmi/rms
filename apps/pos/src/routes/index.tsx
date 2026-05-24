@@ -1,4 +1,3 @@
-import Layout from "@/components/layout"
 import { createFileRoute } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/")({
@@ -6,5 +5,5 @@ export const Route = createFileRoute("/")({
 })
 
 function RouteComponent() {
-  return <Layout>Hello "/root/"!</Layout>
+  return 'Hello "/root/"!'
 }
