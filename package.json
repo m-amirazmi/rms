@@ -1,13 +1,14 @@
 {
   "name": "rms",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "turbo format",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "release": "./scripts/release.sh"
   },
   "devDependencies": {
     "prettier": "^3.8.3",

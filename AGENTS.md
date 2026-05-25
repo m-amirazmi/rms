@@ -81,6 +81,24 @@ bun run format
 
 ---
 
+## Release Workflow
+
+After a feature is implemented, create the changelog, commit, tag, and push:
+
+```bash
+# 1. Create changelog from template (fills version/feature-id/title)
+#    Opens $EDITOR for you to write Added/Changed/Fixed sections
+./scripts/release.sh v0.0.3 pos-03 "App Shell & Layout"
+
+# 2. Script auto-commits, tags with annotated tag, and pushes
+```
+
+- Changelogs go in `apps/pos/docs/changelog/v<version>-<feature-slug>.md`
+- Template: `apps/pos/docs/changelog/_template.md`
+- Tag message = full changelog content (annotated tag)
+
+---
+
 ## Design Rules (Quick Reference)
 
 1. **Colors:** Only CSS variables (`--background`, `--primary`, etc.). Never hex/rgb/hsl literals.
