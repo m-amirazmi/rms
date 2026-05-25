@@ -1,10 +1,14 @@
 import { StrictMode } from "react"
 import ReactDOM from "react-dom/client"
 import { RouterProvider, createRouter } from "@tanstack/react-router"
+import { registerSW } from "virtual:pwa-register"
 import { ThemeProvider } from "@/components/theme-provider.tsx"
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen"
+
+// Register service worker for PWA auto-updates
+registerSW({ immediate: true })
 
 // Create a new router instance
 const router = createRouter({ routeTree })
