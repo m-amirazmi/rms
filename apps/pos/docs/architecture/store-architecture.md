@@ -153,4 +153,4 @@ Keep stores **small and focused**. If a slice starts needing 10+ fields, conside
 
 ## Version
 
-Current POS version: **v0.0.3**
+Current POS version: **v0.0.4**

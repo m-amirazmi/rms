@@ -61,4 +61,4 @@ Once all wizard steps are implemented, completed steps may become **clickable** 
 
 ## Version
 
-Current POS version: **v0.0.3**
+Current POS version: **v0.0.4**

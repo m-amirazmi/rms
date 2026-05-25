@@ -38,6 +38,7 @@ export const WIZARD_STEP_ROUTES: WizardStepRoute[] = [
 
 export interface WizardFormData {
   category?: string
+  urgency?: string
   brand?: string
   model?: string
   issues?: string[]

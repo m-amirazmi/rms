@@ -26,7 +26,7 @@ interface TopBarProps {
  */
 export function TopBar({ outletName = "KL Branch", breadcrumb }: TopBarProps) {
   return (
-    <header className="sticky top-0 z-40 flex h-16 w-full shrink-0 items-center border-b border-border bg-background px-4 lg:grid lg:grid-cols-12">
+    <header className="sticky top-0 z-40 flex w-full shrink-0 items-center border-b border-border bg-background px-4 py-4 lg:grid lg:grid-cols-12 lg:px-8">
       {/* Left: Logo (non-interactive per spec) */}
       <div className="lg:col-span-3">
         <Brand />

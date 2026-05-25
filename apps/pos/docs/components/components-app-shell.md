@@ -117,4 +117,4 @@ import { BottomNav } from "@/components/bottom-nav"
 
 ## Version
 
-Current POS version: **v0.0.3**
+Current POS version: **v0.0.4**

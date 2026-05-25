@@ -1,17 +1,22 @@
 import { useState } from "react"
 
+import {
+  CaretDown,
+  CaretUp,
+  CurrencyDollar,
+  DeviceMobile,
+  DeviceTablet,
+  GameController,
+  Laptop,
+  ListChecks,
+  Watch,
+  Devices,
+  Wrench,
+} from "@phosphor-icons/react"
 import { Badge } from "@workspace/ui/components/badge"
 import { CardHeader, CardTitle } from "@workspace/ui/components/card"
 import { Separator } from "@workspace/ui/components/separator"
 import { cn } from "@workspace/ui/lib/utils"
-import {
-  CaretDown,
-  CaretUp,
-  DeviceMobile,
-  CurrencyDollar,
-  ListChecks,
-  Wrench,
-} from "@phosphor-icons/react"
 
 import { useWizardStore } from "@/features/wizard"
 
@@ -138,7 +143,7 @@ export function SummaryPeek({ className }: SummaryPeekProps) {
   return (
     <div
       className={cn(
-        "sticky bottom-16 z-20 w-full border-t border-border bg-card md:hidden",
+        "sticky bottom-18 z-20 w-full border-t border-border bg-card md:hidden",
         className
       )}
     >
@@ -175,9 +180,64 @@ export function SummaryPeek({ className }: SummaryPeekProps) {
 // Shared Summary Content
 // ---------------------------------------------------------------------------
 
+const CATEGORY_ICON_MAP: Record<string, React.ReactNode> = {
+  smartphone: <DeviceMobile className="size-4" />,
+  laptop: <Laptop className="size-4" />,
+  tablet: <DeviceTablet className="size-4" />,
+  wearable: <Watch className="size-4" />,
+  console: <GameController className="size-4" />,
+  other: <Devices className="size-4" />,
+}
+
 function SummaryContent() {
+  const category = useWizardStore((s) => s.formData.category?.category)
+  const urgency = useWizardStore((s) => s.formData.category?.urgency)
+
+  const urgencyDotColor: Record<string, string> = {
+    standard: "bg-muted-foreground",
+    express: "bg-accent",
+    warranty: "bg-secondary",
+  }
+
   return (
     <div className="flex flex-col gap-4 pt-2">
+      {/* Category */}
+      <div className="flex items-center justify-between">
+        <span className="text-sm text-muted-foreground">Category</span>
+        {category ? (
+          <div className="flex items-center gap-1.5">
+            <span className="text-muted-foreground">
+              {CATEGORY_ICON_MAP[category]}
+            </span>
+            <span className="text-sm font-medium text-foreground capitalize">
+              {category}
+            </span>
+          </div>
+        ) : (
+          <span className="text-sm text-muted-foreground">—</span>
+        )}
+      </div>
+
+      {/* Urgency */}
+      {urgency && (
+        <div className="flex items-center justify-between">
+          <span className="text-sm text-muted-foreground">Urgency</span>
+          <div className="flex items-center gap-1.5">
+            <span
+              className={cn(
+                "inline-block size-2 rounded-full",
+                urgencyDotColor[urgency]
+              )}
+            />
+            <span className="text-sm font-medium text-foreground capitalize">
+              {urgency}
+            </span>
+          </div>
+        </div>
+      )}
+
+      <Separator />
+
       <div className="flex items-center gap-2">
         <DeviceMobile className="size-4 text-muted-foreground" />
         <span className="text-sm">{MOCK_DEVICE_NAME}</span>

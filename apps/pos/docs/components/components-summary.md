@@ -100,4 +100,4 @@ When real wizard steps start populating `formData`, the summary components will 
 
 ## Version
 
-Current POS version: **v0.0.3**
+Current POS version: **v0.0.4**
