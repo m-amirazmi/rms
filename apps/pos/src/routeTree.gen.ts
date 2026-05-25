@@ -10,7 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as authStaffSelectionRouteImport } from './routes/(auth)/staff-selection'
+import { Route as wizardSelectCategoryRouteImport } from './routes/(wizard)/select-category'
+import { Route as authSelectStaffRouteImport } from './routes/(auth)/select-staff'
 import { Route as authNewDeviceRouteImport } from './routes/(auth)/new-device'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +19,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const authStaffSelectionRoute = authStaffSelectionRouteImport.update({
-  id: '/(auth)/staff-selection',
-  path: '/staff-selection',
+const wizardSelectCategoryRoute = wizardSelectCategoryRouteImport.update({
+  id: '/(wizard)/select-category',
+  path: '/select-category',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authSelectStaffRoute = authSelectStaffRouteImport.update({
+  id: '/(auth)/select-staff',
+  path: '/select-staff',
   getParentRoute: () => rootRouteImport,
 } as any)
 const authNewDeviceRoute = authNewDeviceRouteImport.update({
@@ -32,31 +38,40 @@ const authNewDeviceRoute = authNewDeviceRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/new-device': typeof authNewDeviceRoute
-  '/staff-selection': typeof authStaffSelectionRoute
+  '/select-staff': typeof authSelectStaffRoute
+  '/select-category': typeof wizardSelectCategoryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/new-device': typeof authNewDeviceRoute
-  '/staff-selection': typeof authStaffSelectionRoute
+  '/select-staff': typeof authSelectStaffRoute
+  '/select-category': typeof wizardSelectCategoryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(auth)/new-device': typeof authNewDeviceRoute
-  '/(auth)/staff-selection': typeof authStaffSelectionRoute
+  '/(auth)/select-staff': typeof authSelectStaffRoute
+  '/(wizard)/select-category': typeof wizardSelectCategoryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/new-device' | '/staff-selection'
+  fullPaths: '/' | '/new-device' | '/select-staff' | '/select-category'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/new-device' | '/staff-selection'
-  id: '__root__' | '/' | '/(auth)/new-device' | '/(auth)/staff-selection'
+  to: '/' | '/new-device' | '/select-staff' | '/select-category'
+  id:
+    | '__root__'
+    | '/'
+    | '/(auth)/new-device'
+    | '/(auth)/select-staff'
+    | '/(wizard)/select-category'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   authNewDeviceRoute: typeof authNewDeviceRoute
-  authStaffSelectionRoute: typeof authStaffSelectionRoute
+  authSelectStaffRoute: typeof authSelectStaffRoute
+  wizardSelectCategoryRoute: typeof wizardSelectCategoryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,11 +83,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(auth)/staff-selection': {
-      id: '/(auth)/staff-selection'
-      path: '/staff-selection'
-      fullPath: '/staff-selection'
-      preLoaderRoute: typeof authStaffSelectionRouteImport
+    '/(wizard)/select-category': {
+      id: '/(wizard)/select-category'
+      path: '/select-category'
+      fullPath: '/select-category'
+      preLoaderRoute: typeof wizardSelectCategoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/select-staff': {
+      id: '/(auth)/select-staff'
+      path: '/select-staff'
+      fullPath: '/select-staff'
+      preLoaderRoute: typeof authSelectStaffRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(auth)/new-device': {
@@ -88,7 +110,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   authNewDeviceRoute: authNewDeviceRoute,
-  authStaffSelectionRoute: authStaffSelectionRoute,
+  authSelectStaffRoute: authSelectStaffRoute,
+  wizardSelectCategoryRoute: wizardSelectCategoryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

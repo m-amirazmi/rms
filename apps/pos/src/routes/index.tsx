@@ -6,7 +6,7 @@ export const Route = createFileRoute("/")({
     const deviceSession = localStorage.getItem("rms_device_session")
 
     if (deviceId && deviceSession) {
-      throw redirect({ to: "/staff-selection" })
+      throw redirect({ to: "/select-staff" })
     }
 
     throw redirect({ to: "/new-device" })

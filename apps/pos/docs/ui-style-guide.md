@@ -246,17 +246,39 @@ import { createFileRoute, useNavigate, redirect } from "@tanstack/react-router"
 
 ## File Organization
 
+### Route Files (Thin Wrappers)
+
+Route files under `src/routes/` contain **only** TanStack Router wiring. All business logic lives in `src/features/`.
+
+```tsx
+// src/routes/(auth)/select-staff.tsx
+import { createFileRoute } from "@tanstack/react-router"
+import { SelectStaffPage } from "@/features/select-staff"
+
+export const Route = createFileRoute("/(auth)/select-staff")({
+  component: SelectStaffPage,
+})
 ```
-src/routes/
-  __root.tsx              # Root layout (no header on auth screens)
-  index.tsx               # Gateway redirect
-  (auth)/
-    new-device.tsx        # Device registration
-    staff-selection.tsx   # Staff picker placeholder
+
+### Feature Modules
+
+See `frontend-architecture.md` for the full feature module convention.
+
+```
+src/features/<feature>/
+  index.ts          # Barrel export
+  types.ts          # Interfaces
+  constants.ts      # Mock data
+  schemas.ts        # Zod schemas
+  api.ts            # Async functions
+  utils.ts          # Pure helpers
+  components/
+    <feature>-page.tsx
+    ...
 ```
 
 ---
 
 ## Version
 
-Current POS version: **v0.0.1**
+Current POS version: **v0.0.2**

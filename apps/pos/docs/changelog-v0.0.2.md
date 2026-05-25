@@ -1,0 +1,49 @@
+# Changelog — POS v0.0.2
+
+## Feature: Staff Selector & Identity (pos-02)
+
+### Added
+- **Staff selection screen** (`/select-staff`) with responsive card grid
+  - 6 mock staff members with avatars, positions, last-active times, and daily ticket counts
+  - Circle avatar initials with theme-colored backgrounds
+  - Position badges using `@workspace/ui` Badge component (Technician, Frontdesk, Manager)
+- **PIN authentication overlay**
+  - 4-digit PIN input with auto-focus, auto-submit, keyboard navigation, paste support
+  - React Hook Form + Zod validation
+  - Wrong PIN shake animation with attempt counter
+  - 5-attempt lockout with 5-minute countdown timer
+  - Mock PINs: 1111, 2222, 3333, 4444, 4444, 5555, 6666
+- **Auth topbar** (`AuthTopbar` component)
+  - Phosphor `Storefront` icon with flat background
+  - "RepairFlow POS" title
+  - "KL Branch" badge using `@workspace/ui` Badge
+  - Designed for reuse in wizard steps (extensible for breadcrumbs, language, avatar)
+- **Select category placeholder** (`/select-category`)
+  - Empty wizard step 1 page
+  - Ready for category grid implementation
+
+### Changed
+- **Refactored to feature-based architecture**
+  - Extracted `select-staff` feature into `src/features/select-staff/`
+  - Extracted `new-device` feature into `src/features/new-device/`
+  - Extracted `select-category` feature into `src/features/select-category/`
+  - Route files are now thin wrappers — only TanStack Router wiring
+  - Each feature owns: types, constants, schemas, API, utils, components, README
+- **Updated `ui-style-guide.md`**
+  - Added feature module organization section
+  - Added route file conventions
+  - Updated version to v0.0.2
+- **Added `frontend-architecture.md`**
+  - Documented feature-based folder structure
+  - Feature module anatomy and rules
+  - Dependency direction guidelines
+  - Example for adding new features
+
+### Fixed
+- Fixed TypeScript `verbatimModuleSyntax` type import errors
+- Fixed `baseUrl` deprecation warning in `tsconfig.json`
+
+### Technical Details
+- Route renamed: `/staff-selection` → `/select-staff`
+- Added `animate-shake` keyframe to `globals.css`
+- All features use `import type` for type-only imports
