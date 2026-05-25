@@ -1,5 +1,5 @@
-import { StorefrontIcon } from "@phosphor-icons/react"
 import { Badge } from "@workspace/ui/components/badge"
+import { Brand } from "@workspace/ui/components/brand"
 import { cn } from "@workspace/ui/lib/utils"
 
 interface AuthTopbarProps {
@@ -14,14 +14,7 @@ export default function AuthTopbar({ className }: AuthTopbarProps) {
         className
       )}
     >
-      <div className="flex items-center gap-3">
-        <div className="flex size-10 items-center justify-center rounded-lg bg-primary/15">
-          <StorefrontIcon className="size-5 text-primary" weight="fill" />
-        </div>
-        <span className="font-heading text-lg font-semibold tracking-wide">
-          RepairFlow POS
-        </span>
-      </div>
+      <Brand />
 
       <Badge variant="outline">KL Branch</Badge>
     </header>

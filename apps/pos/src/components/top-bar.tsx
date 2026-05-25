@@ -1,4 +1,5 @@
 import { Badge } from "@workspace/ui/components/badge"
+import { Brand } from "@workspace/ui/components/brand"
 
 import { LanguageToggle } from "./language-toggle"
 import { AvatarPopover } from "./avatar-popover"
@@ -27,10 +28,8 @@ export function TopBar({ outletName = "KL Branch", breadcrumb }: TopBarProps) {
   return (
     <header className="sticky top-0 z-40 flex h-16 w-full shrink-0 items-center border-b border-border bg-background px-4 lg:grid lg:grid-cols-12">
       {/* Left: Logo (non-interactive per spec) */}
-      <div className="flex items-center gap-3 lg:col-span-3">
-        <span className="font-heading text-lg font-semibold tracking-wide">
-          Baiki POS
-        </span>
+      <div className="lg:col-span-3">
+        <Brand />
       </div>
 
       {/* Centre: Breadcrumb — hidden on mobile, centred on lg+ */}

@@ -2,6 +2,7 @@ import { useRef, useCallback, useEffect, useState } from "react"
 import { useNavigate } from "@tanstack/react-router"
 import { Controller, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { Brand } from "@workspace/ui/components/brand"
 import {
   Card,
   CardContent,
@@ -168,7 +169,9 @@ export function NewDevicePage() {
   )
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-background p-4">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-background p-4 pb-40">
+      <Brand />
+
       <Card className="w-full max-w-md rounded-xl border border-foreground">
         <CardHeader className="text-center">
           <CardTitle>Device Setup</CardTitle>
@@ -208,7 +211,7 @@ export function NewDevicePage() {
                         aria-invalid={!!errors.pin}
                       />
                       {i === GROUP_SIZE - 1 && i !== PIN_LENGTH - 1 && (
-                        <span className="select-none font-mono text-2xl text-muted-foreground">
+                        <span className="font-mono text-2xl text-muted-foreground select-none">
                           —
                         </span>
                       )}

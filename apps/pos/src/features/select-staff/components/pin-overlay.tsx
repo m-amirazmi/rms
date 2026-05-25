@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowLeftIcon, LockKey } from "@phosphor-icons/react"
+import { Brand } from "@workspace/ui/components/brand"
 import { Button } from "@workspace/ui/components/button"
 import {
   Card,
@@ -211,7 +212,9 @@ export function PinOverlay({ staff, onSuccess, onCancel }: PinOverlayProps) {
   const locked = lockoutSeconds > 0
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 p-4 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-6 bg-background/95 p-4 pb-40 backdrop-blur-sm">
+      <Brand />
+
       <Card
         className={`w-full max-w-md rounded-xl border border-foreground ${shake ? "animate-shake" : ""}`}
       >

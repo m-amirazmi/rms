@@ -19,3 +19,15 @@ To use the components in your app, import them from the `ui` package.
 ```tsx
 import { Button } from "@workspace/ui/components/button";
 ```
+
+## Deployment
+
+### POS
+
+```bash
+bun run build --filter=pos
+```
+
+```bash
+npx wrangler pages deploy apps/pos/dist --project-name=rms-pos
+```

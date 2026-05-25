@@ -31,7 +31,7 @@ export function LanguageToggle({ className }: LanguageToggleProps) {
           type="button"
           onClick={() => setLanguage(lang)}
           className={cn(
-            "flex items-center gap-1 rounded-sm px-2 py-1 leading-none transition-colors",
+            "flex items-center gap-1 rounded-sm px-2 py-2 leading-none transition-colors",
             language === lang
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"

@@ -66,7 +66,7 @@ export function WizardBreadcrumb({ className }: WizardBreadcrumbProps) {
               className={cn(
                 "flex items-center gap-1 text-xs whitespace-nowrap text-muted-foreground data-[variant=default]:bg-muted",
                 isCompleted &&
-                  "text-green-900 line-through data-[variant=default]:bg-green-100/60",
+                  "text-green-900 data-[variant=default]:bg-green-100/60",
                 isCurrent &&
                   "text-primary data-[variant=default]:bg-primary/20",
                 isFuture && "text-muted-foreground"
