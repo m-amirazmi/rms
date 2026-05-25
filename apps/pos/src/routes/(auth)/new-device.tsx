@@ -186,7 +186,10 @@ function RouteComponent() {
 
   /* Paste handler ---------------------------------------------------- */
   const handlePaste = useCallback(
-    (e: React.ClipboardEvent<HTMLInputElement>, fieldOnChange: (val: string) => void) => {
+    (
+      e: React.ClipboardEvent<HTMLInputElement>,
+      fieldOnChange: (val: string) => void
+    ) => {
       e.preventDefault()
       const pasted = e.clipboardData.getData("text").replace(/\D/g, "")
       if (!pasted) return
@@ -205,8 +208,8 @@ function RouteComponent() {
   )
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center bg-background gap-6 p-4">
-      <Card className="w-full max-w-md border border-foreground rounded-sm">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-background p-4">
+      <Card className="w-full max-w-md rounded-xl border border-foreground">
         <CardHeader className="text-center">
           <CardTitle>Device Setup</CardTitle>
           <CardDescription>
@@ -237,17 +240,15 @@ function RouteComponent() {
                         onChange={(e) =>
                           handleDigitChange(i, e.target.value, field.onChange)
                         }
-                        onKeyDown={(e) =>
-                          handleKeyDown(i, e, field.onChange)
-                        }
+                        onKeyDown={(e) => handleKeyDown(i, e, field.onChange)}
                         onPaste={(e) => handlePaste(e, field.onChange)}
-                        className="h-14 w-12 text-center text-2xl font-mono disabled:opacity-50"
+                        className="h-14 w-12 text-center font-mono disabled:opacity-50 md:text-2xl"
                         autoFocus={i === 0}
                         aria-label={`Digit ${i + 1} of ${PIN_LENGTH}`}
                         aria-invalid={!!errors.pin}
                       />
                       {i === GROUP_SIZE - 1 && i !== PIN_LENGTH - 1 && (
-                        <span className="text-2xl font-mono text-muted-foreground select-none">
+                        <span className="font-mono text-2xl text-muted-foreground select-none">
                           —
                         </span>
                       )}
@@ -263,13 +264,13 @@ function RouteComponent() {
           )}
 
           {errors.pin && !isLoading && (
-            <p className="text-sm text-destructive text-center max-w-xs">
+            <p className="max-w-xs text-center text-sm text-destructive">
               {errors.pin.message}
             </p>
           )}
 
           {!isLoading && !errors.pin && (
-            <p className="text-sm text-muted-foreground text-center">
+            <p className="text-center text-sm text-muted-foreground">
               Code expires after 10 minutes.
             </p>
           )}
