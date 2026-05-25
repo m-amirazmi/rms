@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as authStaffSelectionRouteImport } from './routes/(auth)/staff-selection'
+import { Route as authNewDeviceRouteImport } from './routes/(auth)/new-device'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const authStaffSelectionRoute = authStaffSelectionRouteImport.update({
+  id: '/(auth)/staff-selection',
+  path: '/staff-selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const authNewDeviceRoute = authNewDeviceRouteImport.update({
+  id: '/(auth)/new-device',
+  path: '/new-device',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/new-device': typeof authNewDeviceRoute
+  '/staff-selection': typeof authStaffSelectionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/new-device': typeof authNewDeviceRoute
+  '/staff-selection': typeof authStaffSelectionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/(auth)/new-device': typeof authNewDeviceRoute
+  '/(auth)/staff-selection': typeof authStaffSelectionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/new-device' | '/staff-selection'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/new-device' | '/staff-selection'
+  id: '__root__' | '/' | '/(auth)/new-device' | '/(auth)/staff-selection'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  authNewDeviceRoute: typeof authNewDeviceRoute
+  authStaffSelectionRoute: typeof authStaffSelectionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +68,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(auth)/staff-selection': {
+      id: '/(auth)/staff-selection'
+      path: '/staff-selection'
+      fullPath: '/staff-selection'
+      preLoaderRoute: typeof authStaffSelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/(auth)/new-device': {
+      id: '/(auth)/new-device'
+      path: '/new-device'
+      fullPath: '/new-device'
+      preLoaderRoute: typeof authNewDeviceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  authNewDeviceRoute: authNewDeviceRoute,
+  authStaffSelectionRoute: authStaffSelectionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
