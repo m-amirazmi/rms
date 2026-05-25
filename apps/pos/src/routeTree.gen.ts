@@ -10,18 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as wizardSelectCategoryRouteImport } from './routes/(wizard)/select-category'
+import { Route as wizardLayoutRouteImport } from './routes/(wizard)/_layout'
 import { Route as authSelectStaffRouteImport } from './routes/(auth)/select-staff'
 import { Route as authNewDeviceRouteImport } from './routes/(auth)/new-device'
+import { Route as wizardLayoutSelectPartsRouteImport } from './routes/(wizard)/_layout.select-parts'
+import { Route as wizardLayoutSelectIssuesRouteImport } from './routes/(wizard)/_layout.select-issues'
+import { Route as wizardLayoutSelectCategoryRouteImport } from './routes/(wizard)/_layout.select-category'
+import { Route as wizardLayoutSelectBrandModelRouteImport } from './routes/(wizard)/_layout.select-brand-model'
+import { Route as wizardLayoutRepairSummaryRouteImport } from './routes/(wizard)/_layout.repair-summary'
+import { Route as wizardLayoutCustomerTechRouteImport } from './routes/(wizard)/_layout.customer-tech'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const wizardSelectCategoryRoute = wizardSelectCategoryRouteImport.update({
-  id: '/(wizard)/select-category',
-  path: '/select-category',
+const wizardLayoutRoute = wizardLayoutRouteImport.update({
+  id: '/(wizard)/_layout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const authSelectStaffRoute = authSelectStaffRouteImport.update({
@@ -34,44 +39,119 @@ const authNewDeviceRoute = authNewDeviceRouteImport.update({
   path: '/new-device',
   getParentRoute: () => rootRouteImport,
 } as any)
+const wizardLayoutSelectPartsRoute = wizardLayoutSelectPartsRouteImport.update({
+  id: '/select-parts',
+  path: '/select-parts',
+  getParentRoute: () => wizardLayoutRoute,
+} as any)
+const wizardLayoutSelectIssuesRoute =
+  wizardLayoutSelectIssuesRouteImport.update({
+    id: '/select-issues',
+    path: '/select-issues',
+    getParentRoute: () => wizardLayoutRoute,
+  } as any)
+const wizardLayoutSelectCategoryRoute =
+  wizardLayoutSelectCategoryRouteImport.update({
+    id: '/select-category',
+    path: '/select-category',
+    getParentRoute: () => wizardLayoutRoute,
+  } as any)
+const wizardLayoutSelectBrandModelRoute =
+  wizardLayoutSelectBrandModelRouteImport.update({
+    id: '/select-brand-model',
+    path: '/select-brand-model',
+    getParentRoute: () => wizardLayoutRoute,
+  } as any)
+const wizardLayoutRepairSummaryRoute =
+  wizardLayoutRepairSummaryRouteImport.update({
+    id: '/repair-summary',
+    path: '/repair-summary',
+    getParentRoute: () => wizardLayoutRoute,
+  } as any)
+const wizardLayoutCustomerTechRoute =
+  wizardLayoutCustomerTechRouteImport.update({
+    id: '/customer-tech',
+    path: '/customer-tech',
+    getParentRoute: () => wizardLayoutRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/new-device': typeof authNewDeviceRoute
   '/select-staff': typeof authSelectStaffRoute
-  '/select-category': typeof wizardSelectCategoryRoute
+  '/customer-tech': typeof wizardLayoutCustomerTechRoute
+  '/repair-summary': typeof wizardLayoutRepairSummaryRoute
+  '/select-brand-model': typeof wizardLayoutSelectBrandModelRoute
+  '/select-category': typeof wizardLayoutSelectCategoryRoute
+  '/select-issues': typeof wizardLayoutSelectIssuesRoute
+  '/select-parts': typeof wizardLayoutSelectPartsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/new-device': typeof authNewDeviceRoute
   '/select-staff': typeof authSelectStaffRoute
-  '/select-category': typeof wizardSelectCategoryRoute
+  '/customer-tech': typeof wizardLayoutCustomerTechRoute
+  '/repair-summary': typeof wizardLayoutRepairSummaryRoute
+  '/select-brand-model': typeof wizardLayoutSelectBrandModelRoute
+  '/select-category': typeof wizardLayoutSelectCategoryRoute
+  '/select-issues': typeof wizardLayoutSelectIssuesRoute
+  '/select-parts': typeof wizardLayoutSelectPartsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/(auth)/new-device': typeof authNewDeviceRoute
   '/(auth)/select-staff': typeof authSelectStaffRoute
-  '/(wizard)/select-category': typeof wizardSelectCategoryRoute
+  '/(wizard)/_layout': typeof wizardLayoutRouteWithChildren
+  '/(wizard)/_layout/customer-tech': typeof wizardLayoutCustomerTechRoute
+  '/(wizard)/_layout/repair-summary': typeof wizardLayoutRepairSummaryRoute
+  '/(wizard)/_layout/select-brand-model': typeof wizardLayoutSelectBrandModelRoute
+  '/(wizard)/_layout/select-category': typeof wizardLayoutSelectCategoryRoute
+  '/(wizard)/_layout/select-issues': typeof wizardLayoutSelectIssuesRoute
+  '/(wizard)/_layout/select-parts': typeof wizardLayoutSelectPartsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/new-device' | '/select-staff' | '/select-category'
+  fullPaths:
+    | '/'
+    | '/new-device'
+    | '/select-staff'
+    | '/customer-tech'
+    | '/repair-summary'
+    | '/select-brand-model'
+    | '/select-category'
+    | '/select-issues'
+    | '/select-parts'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/new-device' | '/select-staff' | '/select-category'
+  to:
+    | '/'
+    | '/new-device'
+    | '/select-staff'
+    | '/customer-tech'
+    | '/repair-summary'
+    | '/select-brand-model'
+    | '/select-category'
+    | '/select-issues'
+    | '/select-parts'
   id:
     | '__root__'
     | '/'
     | '/(auth)/new-device'
     | '/(auth)/select-staff'
-    | '/(wizard)/select-category'
+    | '/(wizard)/_layout'
+    | '/(wizard)/_layout/customer-tech'
+    | '/(wizard)/_layout/repair-summary'
+    | '/(wizard)/_layout/select-brand-model'
+    | '/(wizard)/_layout/select-category'
+    | '/(wizard)/_layout/select-issues'
+    | '/(wizard)/_layout/select-parts'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   authNewDeviceRoute: typeof authNewDeviceRoute
   authSelectStaffRoute: typeof authSelectStaffRoute
-  wizardSelectCategoryRoute: typeof wizardSelectCategoryRoute
+  wizardLayoutRoute: typeof wizardLayoutRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -83,11 +163,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(wizard)/select-category': {
-      id: '/(wizard)/select-category'
-      path: '/select-category'
-      fullPath: '/select-category'
-      preLoaderRoute: typeof wizardSelectCategoryRouteImport
+    '/(wizard)/_layout': {
+      id: '/(wizard)/_layout'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof wizardLayoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(auth)/select-staff': {
@@ -104,14 +184,78 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authNewDeviceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/(wizard)/_layout/select-parts': {
+      id: '/(wizard)/_layout/select-parts'
+      path: '/select-parts'
+      fullPath: '/select-parts'
+      preLoaderRoute: typeof wizardLayoutSelectPartsRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
+    '/(wizard)/_layout/select-issues': {
+      id: '/(wizard)/_layout/select-issues'
+      path: '/select-issues'
+      fullPath: '/select-issues'
+      preLoaderRoute: typeof wizardLayoutSelectIssuesRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
+    '/(wizard)/_layout/select-category': {
+      id: '/(wizard)/_layout/select-category'
+      path: '/select-category'
+      fullPath: '/select-category'
+      preLoaderRoute: typeof wizardLayoutSelectCategoryRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
+    '/(wizard)/_layout/select-brand-model': {
+      id: '/(wizard)/_layout/select-brand-model'
+      path: '/select-brand-model'
+      fullPath: '/select-brand-model'
+      preLoaderRoute: typeof wizardLayoutSelectBrandModelRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
+    '/(wizard)/_layout/repair-summary': {
+      id: '/(wizard)/_layout/repair-summary'
+      path: '/repair-summary'
+      fullPath: '/repair-summary'
+      preLoaderRoute: typeof wizardLayoutRepairSummaryRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
+    '/(wizard)/_layout/customer-tech': {
+      id: '/(wizard)/_layout/customer-tech'
+      path: '/customer-tech'
+      fullPath: '/customer-tech'
+      preLoaderRoute: typeof wizardLayoutCustomerTechRouteImport
+      parentRoute: typeof wizardLayoutRoute
+    }
   }
 }
+
+interface wizardLayoutRouteChildren {
+  wizardLayoutCustomerTechRoute: typeof wizardLayoutCustomerTechRoute
+  wizardLayoutRepairSummaryRoute: typeof wizardLayoutRepairSummaryRoute
+  wizardLayoutSelectBrandModelRoute: typeof wizardLayoutSelectBrandModelRoute
+  wizardLayoutSelectCategoryRoute: typeof wizardLayoutSelectCategoryRoute
+  wizardLayoutSelectIssuesRoute: typeof wizardLayoutSelectIssuesRoute
+  wizardLayoutSelectPartsRoute: typeof wizardLayoutSelectPartsRoute
+}
+
+const wizardLayoutRouteChildren: wizardLayoutRouteChildren = {
+  wizardLayoutCustomerTechRoute: wizardLayoutCustomerTechRoute,
+  wizardLayoutRepairSummaryRoute: wizardLayoutRepairSummaryRoute,
+  wizardLayoutSelectBrandModelRoute: wizardLayoutSelectBrandModelRoute,
+  wizardLayoutSelectCategoryRoute: wizardLayoutSelectCategoryRoute,
+  wizardLayoutSelectIssuesRoute: wizardLayoutSelectIssuesRoute,
+  wizardLayoutSelectPartsRoute: wizardLayoutSelectPartsRoute,
+}
+
+const wizardLayoutRouteWithChildren = wizardLayoutRoute._addFileChildren(
+  wizardLayoutRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   authNewDeviceRoute: authNewDeviceRoute,
   authSelectStaffRoute: authSelectStaffRoute,
-  wizardSelectCategoryRoute: wizardSelectCategoryRoute,
+  wizardLayoutRoute: wizardLayoutRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

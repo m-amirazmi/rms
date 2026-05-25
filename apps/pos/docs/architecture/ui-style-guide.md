@@ -133,6 +133,63 @@ For 6-digit codes, split into two groups of 3.
 
 ---
 
+## Layout Patterns
+
+### Top Bar Grid (True-Centre Breadcrumb)
+
+For headers that need a centred element regardless of left/right column widths, use a 12-column grid:
+
+```tsx
+<header className="grid h-16 grid-cols-12 items-center px-4">
+  {/* Left — spans 3 cols */}
+  <div className="col-span-3">Logo</div>
+
+  {/* Centre — spans 6 cols, centred */}
+  <div className="col-span-6 flex justify-center">
+    <WizardBreadcrumb />
+  </div>
+
+  {/* Right — spans 3 cols, right-aligned */}
+  <div className="col-span-3 flex justify-end gap-2">
+    <Badge>KL Branch</Badge>
+    <LanguageToggle />
+    <AvatarPopover />
+  </div>
+</header>
+```
+
+| Breakpoint | Grid behaviour |
+|---|---|
+| `lg+` | Full 3-6-3 grid with breadcrumb centred |
+| `< lg` | Breadcrumb hidden; simplified 3-6-3 grid or flex `justify-between` |
+
+### Wizard Shell Layout
+
+The wizard shell uses a responsive **flex column** layout with breakpoint-specific content panels:
+
+```tsx
+<div className="flex h-screen w-screen flex-col overflow-hidden">
+  <TopBar />
+  <SummaryBar />          {/* md only */}
+  <div className="flex min-h-0 flex-1">
+    <main className="flex flex-1 flex-col overflow-y-auto">
+      <Outlet />
+      <SummaryPeek />     {/* < md only */}
+      <BottomNav />
+    </main>
+    <SummaryPanel />      {/* lg+ only */}
+  </div>
+</div>
+```
+
+| Breakpoint | Layout |
+|---|---|
+| `lg+` | Two-column: content left, `SummaryPanel` right |
+| `md` | Single column, `SummaryBar` above content |
+| `< md` | Single column, `SummaryPeek` above `BottomNav` |
+
+---
+
 ## Spacing & Sizing
 
 | Context | Tailwind | Value |
@@ -262,7 +319,7 @@ export const Route = createFileRoute("/(auth)/select-staff")({
 
 ### Feature Modules
 
-See `frontend-architecture.md` for the full feature module convention.
+See `architecture/frontend-architecture.md` for the full feature module convention.
 
 ```
 src/features/<feature>/
@@ -281,4 +338,4 @@ src/features/<feature>/
 
 ## Version
 
-Current POS version: **v0.0.2**
+Current POS version: **v0.0.3**
