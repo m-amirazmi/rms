@@ -18,6 +18,7 @@ export {
   WIZARD_STEP_ROUTES,
 } from "./wizard-store"
 export type {
+  DeviceCategory,
   WizardStep,
   WizardFormData,
   WizardStepRoute,

@@ -13,6 +13,14 @@ export type WizardStep =
   | "customer-tech"
   | "summary"
 
+export type DeviceCategory =
+  | "smartphone"
+  | "laptop"
+  | "tablet"
+  | "wearable"
+  | "console"
+  | "other"
+
 export const WIZARD_STEPS: WizardStep[] = [
   "category",
   "brand-model",
@@ -37,8 +45,8 @@ export const WIZARD_STEP_ROUTES: WizardStepRoute[] = [
 ]
 
 export interface WizardFormData {
-  category?: string
-  urgency?: string
+  category?: DeviceCategory
+  urgency?: "standard" | "express" | "warranty"
   brand?: string
   model?: string
   issues?: string[]

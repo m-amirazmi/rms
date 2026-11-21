@@ -31,9 +31,15 @@ export function BottomNav({ className }: BottomNavProps) {
   const isFirstStep = safeIndex === 0
   const isLastStep = safeIndex === WIZARD_STEP_ROUTES.length - 1
   const isStep1 = pathname === "/select-category"
+  const isBrandSelectionStep = pathname === "/select-brand-model"
 
   const category = useWizardStore((s) => s.formData.category?.category)
-  const canContinueStep1 = isStep1 ? !!category : true
+  const canContinue = (isStep1 ? !!category : true) && !isBrandSelectionStep
+  const continueLabel = isBrandSelectionStep
+    ? "Model selection pending"
+    : isLastStep
+      ? "Create Job"
+      : "Continue"
 
   const goPrev = () => {
     if (!isFirstStep) {
@@ -69,12 +75,11 @@ export function BottomNav({ className }: BottomNavProps) {
         variant="default"
         size="lg"
         onClick={goNext}
-        disabled={isLastStep || !canContinueStep1}
+        disabled={isLastStep || !canContinue}
+        aria-label={continueLabel}
         className="gap-1.5 rounded-sm"
       >
-        <span className="hidden sm:inline">
-          {isLastStep ? "Create Job" : "Continue"}
-        </span>
+        <span className="hidden sm:inline">{continueLabel}</span>
         <CaretRightIcon className="size-4" weight="bold" />
       </Button>
     </nav>

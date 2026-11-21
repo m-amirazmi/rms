@@ -68,24 +68,25 @@ export function SelectCategoryPage() {
   const updateFormData = useWizardStore((s) => s.updateFormData)
   const resetWizard = useWizardStore((s) => s.resetWizard)
 
-  const existingCategory = useWizardStore((s) => s.formData.category)
+  const existingCategory = useWizardStore((s) => s.formData.category?.category)
+  const existingUrgency = useWizardStore((s) => s.formData.category?.urgency)
 
   const form = useForm<CategoryFormInput>({
     resolver: zodResolver(CategorySchema),
     mode: "onChange",
     defaultValues: {
-      category: undefined as unknown as DeviceCategory,
-      urgency: (existingCategory?.urgency as CategoryFormInput["urgency"]) ?? "standard",
+      category: existingCategory,
+      urgency: existingUrgency ?? "standard",
     },
   })
 
   // Sync default urgency into the wizard store on first load so the
   // summary panel reflects it immediately.
   useEffect(() => {
-    if (!existingCategory?.urgency) {
+    if (!existingUrgency) {
       updateFormData("category", { urgency: "standard" })
     }
-  }, [])
+  }, [existingUrgency, updateFormData])
 
   const selectedCategory = form.watch("category")
   const [showBanner, setShowBanner] = useState(true)
@@ -94,6 +95,9 @@ export function SelectCategoryPage() {
   const handleSelectCategory = (category: DeviceCategory) => {
     form.setValue("category", category, { shouldValidate: true })
     updateFormData("category", { category })
+    if (existingCategory !== category) {
+      updateFormData("brand-model", { brand: undefined, model: undefined })
+    }
   }
 
   const handleCancelIntake = () => {

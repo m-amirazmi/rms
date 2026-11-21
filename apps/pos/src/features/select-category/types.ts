@@ -1,10 +1,6 @@
-export type DeviceCategory =
-  | "smartphone"
-  | "laptop"
-  | "tablet"
-  | "wearable"
-  | "console"
-  | "other"
+import type { DeviceCategory } from "@/features/wizard"
+
+export type { DeviceCategory }
 
 export interface CategoryMeta {
   id: DeviceCategory
