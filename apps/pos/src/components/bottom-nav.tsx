@@ -31,6 +31,7 @@ interface BottomNavProps {
  * - Continue: advances to the next step
  * - On Step 1, Continue is only enabled when a category has been selected
  * - On Brand & Model, Continue is only enabled when a model has been selected
+ * - On Issues, Continue requires a selected issue or non-empty notes
  * - On the final step (Summary), Continue becomes "Create Job"
  */
 export function BottomNav({ className }: BottomNavProps) {
@@ -45,16 +46,21 @@ export function BottomNav({ className }: BottomNavProps) {
   const isLastStep = safeIndex === WIZARD_STEP_ROUTES.length - 1
   const isStep1 = pathname === "/select-category"
   const isBrandSelectionStep = pathname === "/select-brand-model"
+  const isIssuesStep = pathname === "/select-issues"
 
   const category = useWizardStore((s) => s.formData.category?.category)
   const selectedBrand = useWizardStore((s) => s.formData["brand-model"]?.brand)
   const selectedModel = useWizardStore((s) => s.formData["brand-model"]?.model)
+  const selectedIssues = useWizardStore((s) => s.formData.issues?.issues)
+  const issueNotes = useWizardStore((s) => s.formData.issues?.issueNotes)
   const resetWizard = useWizardStore((s) => s.resetWizard)
   const canContinue = isStep1
     ? Boolean(category)
     : isBrandSelectionStep
       ? Boolean(selectedBrand && selectedModel)
-      : true
+      : isIssuesStep
+        ? Boolean(selectedIssues?.length || issueNotes?.trim())
+        : true
   const continueLabel = isLastStep
     ? "Create Job"
     : isBrandSelectionStep && !selectedModel

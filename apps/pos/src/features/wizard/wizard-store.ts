@@ -49,6 +49,7 @@ export interface WizardFormData {
   brand?: string
   model?: string
   issues?: string[]
+  issueNotes?: string
   parts?: string[]
   customerName?: string
   technicianName?: string

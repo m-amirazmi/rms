@@ -26,11 +26,6 @@ import { useWizardStore } from "@/features/wizard"
 // ---------------------------------------------------------------------------
 
 const MOCK_DEVICE_NAME = "iPhone 16 Pro Max"
-const MOCK_ISSUES = [
-  "Screen cracked",
-  "Battery draining fast",
-  "Face ID not working",
-]
 const MOCK_PARTS = ["OLED Display Assembly", "Battery", "Front Camera Module"]
 const MOCK_TOTAL = 561.0
 const STEP_COUNT = 6
@@ -191,6 +186,10 @@ const CATEGORY_ICON_MAP: Record<string, React.ReactNode> = {
 
 function SummaryContent() {
   const category = useWizardStore((s) => s.formData.category?.category)
+  const issues = useWizardStore((s) => s.formData.issues?.issues ?? [])
+  const issueNotes = useWizardStore((s) =>
+    s.formData.issues?.issueNotes?.trim()
+  )
 
   return (
     <div className="flex flex-col gap-4 pt-2">
@@ -223,14 +222,23 @@ function SummaryContent() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center gap-2 text-sm font-medium">
           <ListChecks className="size-4 text-muted-foreground" />
-          <span>Issues ({MOCK_ISSUES.length})</span>
+          <span>Issues ({issues.length})</span>
         </div>
         <ul className="flex flex-col gap-1 pl-6">
-          {MOCK_ISSUES.map((issue, i) => (
-            <li key={i} className="text-xs text-muted-foreground">
-              • {issue}
+          {issues.length > 0 ? (
+            issues.map((issue) => (
+              <li key={issue} className="text-xs text-muted-foreground">
+                • {issue}
+              </li>
+            ))
+          ) : !issueNotes ? (
+            <li className="text-xs text-muted-foreground">—</li>
+          ) : null}
+          {issueNotes && (
+            <li className="text-xs text-muted-foreground">
+              • Notes: {issueNotes}
             </li>
-          ))}
+          )}
         </ul>
       </div>
 
