@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router"
 
 import { CheckCircle, DeviceMobile } from "@phosphor-icons/react"
+import { QRCodeSVG } from "qrcode.react"
 
 import { Button } from "@workspace/ui/components/button"
 import { Separator } from "@workspace/ui/components/separator"
@@ -13,6 +14,8 @@ import {
 
 const EMPTY_ISSUES: string[] = []
 const EMPTY_PARTS: SelectedPart[] = []
+const WHATSAPP_NUMBER = "601119821105"
+const WHATSAPP_CONSENT_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("YES")}`
 
 const formatCurrency = (value: number) => `RM ${value.toFixed(2)}`
 
@@ -66,6 +69,44 @@ export function RepairSummaryPage() {
         <p className="rounded-md bg-muted px-4 py-2 font-mono text-lg">
           {submission.jobId}
         </p>
+        <section
+          aria-labelledby="whatsapp-updates-heading"
+          className="flex w-full max-w-md flex-col items-center gap-4 rounded-lg border border-border bg-card p-5"
+        >
+          <div className="space-y-1">
+            <h2
+              id="whatsapp-updates-heading"
+              className="font-heading text-lg font-semibold"
+            >
+              Get WhatsApp Repair Updates
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Please reply Y / YES to receive WhatsApp updates on your repair
+              progress.
+            </p>
+          </div>
+          <a
+            href={WHATSAPP_CONSENT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open WhatsApp and send YES to opt in to repair updates"
+            className="rounded-md bg-white p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            <QRCodeSVG value={WHATSAPP_CONSENT_URL} size={176} level="M" />
+          </a>
+          <div className="space-y-1 text-sm">
+            <p>
+              Scan to open WhatsApp with <span className="font-semibold">YES</span>{" "}
+              ready to send.
+            </p>
+            <p className="text-muted-foreground">
+              WhatsApp: +{WHATSAPP_NUMBER}
+            </p>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Demo only — repair updates are not sent by this mock.
+          </p>
+        </section>
         <Button size="lg" onClick={startNewIntake}>
           Start New Repair Intake
         </Button>
