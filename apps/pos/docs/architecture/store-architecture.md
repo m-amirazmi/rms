@@ -12,7 +12,7 @@ We keep stores **functional and minimal** (plain `(set, get) => …` creators) r
 | Store | Feature | Domain | Persistence |
 |---|---|---|---|
 | `useLanguageStore` | `features/language` | UI language (`EN` / `MY`) | `localStorage` — `rms_language` |
-| `useWizardStore` | `features/wizard` | Repair-intake wizard progress | `localStorage` — `rms_wizard` |
+| `useWizardStore` | `features/wizard` | Repair-intake wizard progress | `sessionStorage` — `rms_wizard` |
 
 Components subscribe via **selectors** so only the data they actually read triggers re-renders.
 
@@ -67,6 +67,7 @@ Manages the multi-step repair-intake wizard — current step index, accumulated 
 |---|---|---|---|
 | `currentStepIndex` | `number` | `0` | 0-based index into `WIZARD_STEPS` |
 | `formData` | `Partial<Record<WizardStep, WizardFormData>>` | `{}` | Data keyed by step name |
+| `submission` | `JobSubmission` | `idle` | Frontend job creation status; not persisted |
 
 ### Actions
 
@@ -76,6 +77,7 @@ Manages the multi-step repair-intake wizard — current step index, accumulated 
 | `nextStep` | `() => void` | Advance one step |
 | `prevStep` | `() => void` | Go back one step |
 | `updateFormData` | `(step, data) => void` | Merge partial data into a step's bucket |
+| `createMockJob` | `() => void` | Simulate repair-job creation after validation |
 | `resetWizard` | `() => void` | Clear all progress and return to step 0 |
 
 ### Usage
@@ -135,7 +137,7 @@ Shell components (BottomNav, WizardBreadcrumb) derive the active step from the c
 Both stores use Zustand's `persist` middleware with a `partialize` option (on the wizard store) so we only serialize what is necessary:
 
 - **`rms_language`** — The staff-selected language survives browser restarts.
-- **`rms_wizard`** — Step index and form data survive accidental refreshes mid-intake. The derived summary is **not** persisted because it is rebuilt at runtime.
+- **`rms_wizard`** — Step index and form data survive accidental refreshes in the same tab session and are cleared when the session ends. Submission state is not persisted.
 
 ---
 

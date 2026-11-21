@@ -46,6 +46,7 @@ import {
 import { SelectionCard } from "@/components/selection-card"
 import { useWizardStore } from "@/features/wizard"
 import { CATEGORY_ICON_STYLES } from "@/features/select-category/constants"
+import { Button } from "@workspace/ui/components/button"
 
 import { BRANDS_BY_CATEGORY, CATEGORY_LABELS } from "../constants"
 import { MODEL_OPTIONS_BY_CATEGORY } from "../model-options"
@@ -127,32 +128,21 @@ function BrandLogo({ brand }: { brand: BrandMeta }) {
 function SelectionSummary({
   brand,
   model,
-  isSelectingBrand,
   onToggleBrandSelection,
 }: {
   brand: BrandMeta | undefined
   model: DeviceModel | undefined
-  isSelectingBrand: boolean
   onToggleBrandSelection: () => void
 }) {
   const modelLabel = model?.name ?? "Select a model"
 
   return (
-    <div
-      aria-live="polite"
-      className="min-w-0 sm:ml-auto sm:w-96 sm:text-right"
-    >
+    <div className="flex w-full min-w-0 items-center justify-end gap-2 sm:ml-auto sm:w-96">
       {brand ? (
-        <button
-          type="button"
-          onClick={onToggleBrandSelection}
-          aria-label={
-            isSelectingBrand
-              ? "Keep selected brand"
-              : `Change brand from ${brand.name}`
-          }
+        <div
+          aria-live="polite"
           title={`${brand.name} | ${modelLabel}`}
-          className="inline-flex w-full min-w-0 items-center justify-end gap-1.5 text-right text-sm font-medium hover:text-primary focus-visible:ring-2 focus-visible:ring-ring/30 focus-visible:outline-none"
+          className="inline-flex min-w-0 items-center justify-end gap-1.5 text-right text-sm font-medium"
         >
           <span className="truncate">{brand.name}</span>
           <span aria-hidden="true" className="h-5 w-px shrink-0 bg-border" />
@@ -161,13 +151,25 @@ function SelectionSummary({
           >
             {modelLabel}
           </span>
-        </button>
+        </div>
       ) : (
-        <div className="inline-flex w-full min-w-0 items-center justify-end gap-1.5 text-right text-sm font-medium text-muted-foreground">
+        <div className="inline-flex min-w-0 items-center justify-end gap-1.5 text-right text-sm font-medium text-muted-foreground">
           <span>Select a brand</span>
           <span aria-hidden="true" className="h-5 w-px shrink-0 bg-border" />
           <span>Select a model</span>
         </div>
+      )}
+      {brand && (
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={onToggleBrandSelection}
+          aria-label={`Change brand from ${brand.name}`}
+          className="shrink-0"
+        >
+          Change Brand
+        </Button>
       )}
     </div>
   )
@@ -244,15 +246,28 @@ export function SelectBrandModelPage() {
   const showBrandOptions = !selectedBrand || isSelectingBrand
 
   const selectBrand = (brandId: string) => {
+    const brand = brands.find((option) => option.id === brandId)
     updateFormData("brand-model", {
       brand: brandId,
-      ...(selectedBrandId !== brandId ? { model: undefined } : {}),
+      brandName: brand?.name,
+      ...(selectedBrandId !== brandId
+        ? { model: undefined, modelName: undefined }
+        : {}),
     })
+    if (selectedBrandId !== brandId) {
+      updateFormData("parts", { parts: [] })
+    }
     setIsSelectingBrand(false)
   }
 
-  const selectModel = (modelId: string) => {
-    updateFormData("brand-model", { model: modelId })
+  const selectModel = (model: DeviceModel) => {
+    updateFormData("brand-model", {
+      model: model.id,
+      modelName: model.name,
+    })
+    if (selectedModelId !== model.id) {
+      updateFormData("parts", { parts: [] })
+    }
     setStep(2)
     navigate({ to: "/select-issues" })
   }
@@ -275,7 +290,6 @@ export function SelectBrandModelPage() {
         <SelectionSummary
           brand={selectedBrand}
           model={selectedModel}
-          isSelectingBrand={isSelectingBrand}
           onToggleBrandSelection={() => {
             setIsSelectingBrand((selecting) => !selecting)
           }}
@@ -313,7 +327,7 @@ export function SelectBrandModelPage() {
               iconBg={iconBg}
               iconText={iconText}
               isSelected={selectedModelId === model.id}
-              onSelect={() => selectModel(model.id)}
+              onSelect={() => selectModel(model)}
             />
           ))}
         </div>

@@ -17,6 +17,8 @@ import { useNavigate } from "@tanstack/react-router"
 
 import { useWizardStore } from "@/features/wizard"
 
+const EMPTY_ISSUES: string[] = []
+
 const ISSUE_OPTIONS = [
   { label: "Display / Screen", icon: <DeviceMobile weight="duotone" /> },
   { label: "Battery", icon: <BatteryCharging weight="duotone" /> },
@@ -32,7 +34,7 @@ export function SelectIssuesPage() {
   const navigate = useNavigate()
   const [showDiagnosticsNote, setShowDiagnosticsNote] = useState(true)
   const selectedIssues = useWizardStore(
-    (state) => state.formData.issues?.issues ?? []
+    (state) => state.formData.issues?.issues ?? EMPTY_ISSUES
   )
   const issueNotes = useWizardStore(
     (state) => state.formData.issues?.issueNotes ?? ""

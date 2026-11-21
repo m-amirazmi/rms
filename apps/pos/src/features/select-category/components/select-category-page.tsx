@@ -33,7 +33,13 @@ export function SelectCategoryPage() {
   const handleSelectCategory = (category: DeviceCategory) => {
     updateFormData("category", { category })
     if (existingCategory !== category) {
-      updateFormData("brand-model", { brand: undefined, model: undefined })
+      updateFormData("brand-model", {
+        brand: undefined,
+        brandName: undefined,
+        model: undefined,
+        modelName: undefined,
+      })
+      updateFormData("parts", { parts: [] })
     }
     setStep(1)
     navigate({ to: "/select-brand-model" })

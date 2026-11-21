@@ -22,7 +22,7 @@ export function WizardShell({
   breadcrumb,
 }: WizardShellProps) {
   return (
-    <div className="flex h-screen w-screen flex-col overflow-hidden">
+    <div className="flex h-dvh w-screen flex-col overflow-hidden">
       {/* Top bar */}
       <TopBar breadcrumb={breadcrumb} />
 
@@ -31,8 +31,8 @@ export function WizardShell({
 
       {/* Main content area */}
       <div className="flex min-h-0 flex-1">
-        <main className="flex flex-1 flex-col overflow-y-auto">
-          <div className="flex-1 p-4 lg:p-8">
+        <main className="flex min-h-0 flex-1 flex-col overflow-hidden">
+          <div className="min-h-0 flex-1 overflow-y-auto p-4 lg:p-8">
             <Outlet />
           </div>
 

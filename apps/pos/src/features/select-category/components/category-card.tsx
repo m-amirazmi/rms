@@ -48,7 +48,7 @@ export function CategoryCard({
     <SelectionCard
       label={label}
       trailing={
-        <span className="shrink-0 font-mono text-sm font-medium text-muted-foreground">
+        <span className="hidden shrink-0 font-mono text-sm font-medium text-muted-foreground md:inline">
           From RM {priceFrom}
         </span>
       }
@@ -59,7 +59,9 @@ export function CategoryCard({
       onSelect={onSelect}
     >
       {/* Description */}
-      <p className="text-sm text-muted-foreground">{description}</p>
+      <p className="hidden text-sm text-muted-foreground md:block">
+        {description}
+      </p>
 
       {/* Metadata row */}
       <div className="flex flex-wrap items-center gap-x-3 gap-y-0.5 text-sm text-muted-foreground">

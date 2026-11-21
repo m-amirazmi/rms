@@ -1,7 +1,7 @@
 import { useNavigate, useLocation } from "@tanstack/react-router"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-import { CaretLeftIcon, CaretRightIcon, X } from "@phosphor-icons/react"
+import { CaretLeftIcon, CaretRightIcon, Check, X } from "@phosphor-icons/react"
 
 import { Button } from "@workspace/ui/components/button"
 import {
@@ -15,7 +15,11 @@ import {
 } from "@workspace/ui/components/dialog"
 import { cn } from "@workspace/ui/lib/utils"
 
-import { WIZARD_STEP_ROUTES, useWizardStore } from "@/features/wizard"
+import {
+  isWizardStepComplete,
+  WIZARD_STEP_ROUTES,
+  useWizardStore,
+} from "@/features/wizard"
 
 interface BottomNavProps {
   className?: string
@@ -29,10 +33,8 @@ interface BottomNavProps {
  *
  * - Previous: disabled on step 1
  * - Continue: advances to the next step
- * - On Step 1, Continue is only enabled when a category has been selected
- * - On Brand & Model, Continue is only enabled when a model has been selected
- * - On Issues, Continue requires a selected issue or non-empty notes
- * - On the final step (Summary), Continue becomes "Create Job"
+ * - Continue is enabled only when the current step is complete
+ * - The final step creates a mock job and prevents duplicate submission
  */
 export function BottomNav({ className }: BottomNavProps) {
   const navigate = useNavigate()
@@ -44,30 +46,26 @@ export function BottomNav({ className }: BottomNavProps) {
 
   const isFirstStep = safeIndex === 0
   const isLastStep = safeIndex === WIZARD_STEP_ROUTES.length - 1
-  const isStep1 = pathname === "/select-category"
-  const isBrandSelectionStep = pathname === "/select-brand-model"
-  const isIssuesStep = pathname === "/select-issues"
-
-  const category = useWizardStore((s) => s.formData.category?.category)
-  const selectedBrand = useWizardStore((s) => s.formData["brand-model"]?.brand)
-  const selectedModel = useWizardStore((s) => s.formData["brand-model"]?.model)
-  const selectedIssues = useWizardStore((s) => s.formData.issues?.issues)
-  const issueNotes = useWizardStore((s) => s.formData.issues?.issueNotes)
+  const formData = useWizardStore((s) => s.formData)
+  const submission = useWizardStore((s) => s.submission)
+  const createMockJob = useWizardStore((s) => s.createMockJob)
   const resetWizard = useWizardStore((s) => s.resetWizard)
-  const canContinue = isStep1
-    ? Boolean(category)
-    : isBrandSelectionStep
-      ? Boolean(selectedBrand && selectedModel)
-      : isIssuesStep
-        ? Boolean(selectedIssues?.length || issueNotes?.trim())
-        : true
+  const setStep = useWizardStore((s) => s.setStep)
+
+  useEffect(() => {
+    setStep(safeIndex)
+  }, [safeIndex, setStep])
+  const currentStep = WIZARD_STEP_ROUTES[safeIndex]?.step
+  const canContinue = currentStep
+    ? isWizardStepComplete(currentStep, formData)
+    : false
   const continueLabel = isLastStep
-    ? "Create Job"
-    : isBrandSelectionStep && !selectedModel
-      ? selectedBrand
-        ? "Select a model to continue"
-        : "Select brand and model to continue"
-      : "Continue"
+    ? submission.status === "success"
+      ? "Job Created"
+      : submission.status === "submitting"
+        ? "Creating Job..."
+        : "Create Repair Job"
+    : "Continue"
 
   const goPrev = () => {
     if (!isFirstStep) {
@@ -76,13 +74,17 @@ export function BottomNav({ className }: BottomNavProps) {
   }
 
   const goNext = () => {
-    if (!isLastStep) {
-      navigate({ to: WIZARD_STEP_ROUTES[safeIndex + 1].path })
+    if (!canContinue) return
+    if (isLastStep) {
+      createMockJob()
+      return
     }
+    navigate({ to: WIZARD_STEP_ROUTES[safeIndex + 1].path })
   }
 
   const handleCancelIntake = () => {
     resetWizard()
+    setShowCancelDialog(false)
     navigate({ to: "/select-staff" })
   }
 
@@ -90,7 +92,7 @@ export function BottomNav({ className }: BottomNavProps) {
     <>
       <nav
         className={cn(
-          "sticky bottom-0 z-30 flex w-full shrink-0 items-center justify-between border-t border-border bg-background px-4 py-4 lg:px-8",
+          "z-30 flex w-full shrink-0 items-center justify-between border-t border-border bg-background px-4 py-4 lg:px-8",
           className
         )}
       >
@@ -121,12 +123,18 @@ export function BottomNav({ className }: BottomNavProps) {
           variant="default"
           size="lg"
           onClick={goNext}
-          disabled={isLastStep || !canContinue}
+          disabled={
+            !canContinue || (isLastStep && submission.status !== "idle")
+          }
           aria-label={continueLabel}
           className="gap-1.5 rounded-sm"
         >
           <span className="hidden sm:inline">{continueLabel}</span>
-          <CaretRightIcon className="size-4" weight="bold" />
+          {isLastStep ? (
+            <Check aria-hidden="true" className="size-4" weight="bold" />
+          ) : (
+            <CaretRightIcon className="size-4" weight="bold" />
+          )}
         </Button>
       </nav>
 
