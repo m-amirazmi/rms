@@ -10,7 +10,7 @@ export default function AuthTopbar({ className }: AuthTopbarProps) {
   return (
     <header
       className={cn(
-        "flex h-16 w-full shrink-0 items-center justify-between border-b border-foreground px-4",
+        "sticky top-0 z-40 flex h-16 w-full shrink-0 items-center justify-between border-b border-foreground bg-background px-4",
         className
       )}
     >

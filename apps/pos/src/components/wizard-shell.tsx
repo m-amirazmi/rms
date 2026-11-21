@@ -5,10 +5,8 @@ import { BottomNav } from "./bottom-nav"
 import { SummaryPanel, SummaryBar, SummaryPeek } from "./summary-panel"
 
 interface WizardShellProps {
-  /** Desktop breadcrumb rendered in the top bar centre */
-  desktopBreadcrumb?: React.ReactNode
-  /** Mobile breadcrumb rendered in a scrollable second row */
-  mobileBreadcrumb?: React.ReactNode
+  /** Breadcrumb rendered in the top bar */
+  breadcrumb?: React.ReactNode
 }
 
 /**
@@ -21,20 +19,12 @@ interface WizardShellProps {
  *   - <md (smartphone): Single column. Sticky SummaryPeek above BottomNav.
  */
 export function WizardShell({
-  desktopBreadcrumb,
-  mobileBreadcrumb,
+  breadcrumb,
 }: WizardShellProps) {
   return (
     <div className="flex h-screen w-screen flex-col overflow-hidden">
       {/* Top bar */}
-      <TopBar breadcrumb={desktopBreadcrumb} />
-
-      {/* Mobile breadcrumb row */}
-      {mobileBreadcrumb && (
-        <div className="scrollbar-hide shrink-0 overflow-x-auto border-b border-border bg-background px-4 py-2 lg:hidden">
-          {mobileBreadcrumb}
-        </div>
-      )}
+      <TopBar breadcrumb={breadcrumb} />
 
       {/* Tablet summary bar */}
       <SummaryBar />

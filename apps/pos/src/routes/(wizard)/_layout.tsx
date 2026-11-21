@@ -22,8 +22,7 @@ export const Route = createFileRoute("/(wizard)/_layout")({
   },
   component: () => (
     <WizardShell
-      desktopBreadcrumb={<WizardBreadcrumb />}
-      mobileBreadcrumb={<WizardBreadcrumb />}
+      breadcrumb={<WizardBreadcrumb />}
     />
   ),
 })

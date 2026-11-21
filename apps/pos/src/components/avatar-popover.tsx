@@ -21,8 +21,11 @@ import {
 } from "@workspace/ui/components/popover"
 import { Button } from "@workspace/ui/components/button"
 import { Separator } from "@workspace/ui/components/separator"
+import { cn } from "@workspace/ui/lib/utils"
+import { GB, MY } from "country-flag-icons/react/3x2"
 
 import { useWizardStore } from "@/features/wizard"
+import { useLanguageStore } from "@/features/language"
 
 interface AvatarPopoverProps {
   staffName?: string
@@ -42,6 +45,8 @@ export function AvatarPopover({
 }: AvatarPopoverProps) {
   const navigate = useNavigate()
   const resetWizard = useWizardStore((s) => s.resetWizard)
+  const language = useLanguageStore((s) => s.language)
+  const setLanguage = useLanguageStore((s) => s.setLanguage)
 
   const handleSwitchStaff = () => {
     navigate({ to: "/select-staff" })
@@ -88,6 +93,37 @@ export function AvatarPopover({
                 <span className="text-xs text-muted-foreground">
                   {branchName}
                 </span>
+              </div>
+            </div>
+
+            <Separator />
+
+            <div className="flex flex-col gap-1.5">
+              <span className="text-xs font-medium text-muted-foreground">
+                Language
+              </span>
+              <div className="grid grid-cols-2 gap-2">
+                {(["EN", "MY"] as const).map((lang) => (
+                  <button
+                    key={lang}
+                    type="button"
+                    onClick={() => setLanguage(lang)}
+                    className={cn(
+                      "flex items-center justify-center gap-1.5 rounded-md border px-2 py-2 text-xs font-medium transition-colors",
+                      language === lang
+                        ? "border-primary bg-primary/10 text-primary"
+                        : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                    )}
+                    aria-pressed={language === lang}
+                  >
+                    {lang === "EN" ? (
+                      <GB className="h-3 w-4" title="English" />
+                    ) : (
+                      <MY className="h-3 w-4" title="Malay" />
+                    )}
+                    {lang === "EN" ? "English" : "Malay"}
+                  </button>
+                ))}
               </div>
             </div>
 

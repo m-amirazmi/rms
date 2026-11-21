@@ -9,7 +9,6 @@ export const CategorySchema = z.object({
     "console",
     "other",
   ]),
-  urgency: z.enum(["standard", "express", "warranty"]).optional(),
 })
 
 export type CategoryFormInput = z.infer<typeof CategorySchema>

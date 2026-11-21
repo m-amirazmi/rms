@@ -17,7 +17,7 @@ export function SelectStaffPage() {
   }, [navigate])
 
   return (
-    <div className="flex h-full w-full flex-col bg-background">
+    <div className="flex h-full w-full flex-col overflow-y-auto bg-background">
       <AuthTopbar />
 
       <div className="flex flex-1 flex-col items-center justify-center gap-6 p-4 pb-30">

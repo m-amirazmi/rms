@@ -12,6 +12,10 @@ export interface BrandMeta {
   id: string
   name: string
   category: DeviceCategory
-  logoSrc: string
   metrics: BrandMetrics
+}
+
+export interface DeviceModel {
+  id: string
+  name: string
 }

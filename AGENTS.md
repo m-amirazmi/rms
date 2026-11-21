@@ -83,7 +83,7 @@ bun run format
 
 ## Browser Preview
 
-- Run `/dev` inside opencode to start the Vite dev server → open the printed URL (typically `http://localhost:5173`) in your browser
+- Run `/dev` inside opencode to start the Vite dev server → open the printed URL (typically `http://localhost:3000`) in your browser
 - Use `Cmd+Opt+I` for browser DevTools to inspect elements, network, and console
 - Run `/web` to launch opencode's own web interface in a browser at `http://localhost:4096`
 - Both can run simultaneously — dev server for your app, `/web` for opencode in browser

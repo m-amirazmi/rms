@@ -1,5 +1,12 @@
 import type { DeviceCategory } from "@/features/wizard"
-import type { BrandMeta } from "./types"
+import type { BrandMeta, BrandMetrics } from "./types"
+
+const mockBrand = (
+  id: string,
+  name: string,
+  category: DeviceCategory,
+  metrics: BrandMetrics
+): BrandMeta => ({ id, name, category, metrics })
 
 export const CATEGORY_LABELS: Record<DeviceCategory, string> = {
   smartphone: "Smartphone",
@@ -16,7 +23,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "apple",
       name: "Apple",
       category: "smartphone",
-      logoSrc: "/brands/apple.svg",
       metrics: {
         modelCount: 46,
         completedRepairs: 1240,
@@ -29,7 +35,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "samsung",
       name: "Samsung",
       category: "smartphone",
-      logoSrc: "/brands/samsung.svg",
       metrics: {
         modelCount: 38,
         completedRepairs: 980,
@@ -42,7 +47,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "xiaomi",
       name: "Xiaomi",
       category: "smartphone",
-      logoSrc: "/brands/xiaomi.svg",
       metrics: {
         modelCount: 24,
         completedRepairs: 390,
@@ -55,7 +59,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "oppo",
       name: "Oppo",
       category: "smartphone",
-      logoSrc: "/brands/oppo.svg",
       metrics: {
         modelCount: 21,
         completedRepairs: 340,
@@ -64,13 +67,54 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "3.0 days",
       },
     },
+    mockBrand("google", "Google", "smartphone", {
+      modelCount: 14,
+      completedRepairs: 225,
+      compatibleParts: 65,
+      partsUsed: 880,
+      averageRepairTime: "3.2 days",
+    }),
+    mockBrand("oneplus", "OnePlus", "smartphone", {
+      modelCount: 12,
+      completedRepairs: 180,
+      compatibleParts: 52,
+      partsUsed: 640,
+      averageRepairTime: "3.1 days",
+    }),
+    mockBrand("motorola", "Motorola", "smartphone", {
+      modelCount: 17,
+      completedRepairs: 210,
+      compatibleParts: 58,
+      partsUsed: 760,
+      averageRepairTime: "3.6 days",
+    }),
+    mockBrand("sony", "Sony", "smartphone", {
+      modelCount: 11,
+      completedRepairs: 95,
+      compatibleParts: 34,
+      partsUsed: 280,
+      averageRepairTime: "4.0 days",
+    }),
+    mockBrand("nokia", "Nokia", "smartphone", {
+      modelCount: 9,
+      completedRepairs: 72,
+      compatibleParts: 26,
+      partsUsed: 190,
+      averageRepairTime: "4.2 days",
+    }),
+    mockBrand("honor", "Honor", "smartphone", {
+      modelCount: 13,
+      completedRepairs: 140,
+      compatibleParts: 48,
+      partsUsed: 490,
+      averageRepairTime: "3.4 days",
+    }),
   ],
   laptop: [
     {
       id: "apple",
       name: "Apple",
       category: "laptop",
-      logoSrc: "/brands/apple.svg",
       metrics: {
         modelCount: 32,
         completedRepairs: 420,
@@ -83,7 +127,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "dell",
       name: "Dell",
       category: "laptop",
-      logoSrc: "/brands/dell.svg",
       metrics: {
         modelCount: 26,
         completedRepairs: 380,
@@ -96,7 +139,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "hp",
       name: "HP",
       category: "laptop",
-      logoSrc: "/brands/hp.svg",
       metrics: {
         modelCount: 18,
         completedRepairs: 295,
@@ -109,7 +151,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "lenovo",
       name: "Lenovo",
       category: "laptop",
-      logoSrc: "/brands/lenovo.svg",
       metrics: {
         modelCount: 13,
         completedRepairs: 210,
@@ -118,13 +159,54 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "3.9 days",
       },
     },
+    mockBrand("asus", "ASUS", "laptop", {
+      modelCount: 19,
+      completedRepairs: 240,
+      compatibleParts: 92,
+      partsUsed: 820,
+      averageRepairTime: "4.1 days",
+    }),
+    mockBrand("acer", "Acer", "laptop", {
+      modelCount: 15,
+      completedRepairs: 175,
+      compatibleParts: 71,
+      partsUsed: 620,
+      averageRepairTime: "4.0 days",
+    }),
+    mockBrand("microsoft", "Microsoft", "laptop", {
+      modelCount: 11,
+      completedRepairs: 200,
+      compatibleParts: 63,
+      partsUsed: 680,
+      averageRepairTime: "3.8 days",
+    }),
+    mockBrand("msi", "MSI", "laptop", {
+      modelCount: 16,
+      completedRepairs: 140,
+      compatibleParts: 79,
+      partsUsed: 510,
+      averageRepairTime: "4.4 days",
+    }),
+    mockBrand("razer", "Razer", "laptop", {
+      modelCount: 10,
+      completedRepairs: 85,
+      compatibleParts: 54,
+      partsUsed: 300,
+      averageRepairTime: "4.6 days",
+    }),
+    mockBrand("samsung", "Samsung", "laptop", {
+      modelCount: 14,
+      completedRepairs: 120,
+      compatibleParts: 64,
+      partsUsed: 430,
+      averageRepairTime: "4.0 days",
+    }),
   ],
   tablet: [
     {
       id: "apple",
       name: "Apple",
       category: "tablet",
-      logoSrc: "/brands/apple.svg",
       metrics: {
         modelCount: 24,
         completedRepairs: 510,
@@ -137,7 +219,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "samsung",
       name: "Samsung",
       category: "tablet",
-      logoSrc: "/brands/samsung.svg",
       metrics: {
         modelCount: 14,
         completedRepairs: 230,
@@ -150,7 +231,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "huawei",
       name: "Huawei",
       category: "tablet",
-      logoSrc: "/brands/huawei.svg",
       metrics: {
         modelCount: 10,
         completedRepairs: 105,
@@ -163,7 +243,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "xiaomi",
       name: "Xiaomi",
       category: "tablet",
-      logoSrc: "/brands/xiaomi.svg",
       metrics: {
         modelCount: 8,
         completedRepairs: 82,
@@ -172,13 +251,54 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "3.7 days",
       },
     },
+    mockBrand("lenovo", "Lenovo", "tablet", {
+      modelCount: 12,
+      completedRepairs: 160,
+      compatibleParts: 57,
+      partsUsed: 520,
+      averageRepairTime: "3.8 days",
+    }),
+    mockBrand("realme", "realme", "tablet", {
+      modelCount: 6,
+      completedRepairs: 92,
+      compatibleParts: 33,
+      partsUsed: 240,
+      averageRepairTime: "3.6 days",
+    }),
+    mockBrand("oneplus", "OnePlus", "tablet", {
+      modelCount: 5,
+      completedRepairs: 60,
+      compatibleParts: 25,
+      partsUsed: 165,
+      averageRepairTime: "3.9 days",
+    }),
+    mockBrand("oppo", "Oppo", "tablet", {
+      modelCount: 7,
+      completedRepairs: 74,
+      compatibleParts: 29,
+      partsUsed: 210,
+      averageRepairTime: "4.0 days",
+    }),
+    mockBrand("honor", "Honor", "tablet", {
+      modelCount: 8,
+      completedRepairs: 81,
+      compatibleParts: 32,
+      partsUsed: 230,
+      averageRepairTime: "3.8 days",
+    }),
+    mockBrand("amazon", "Amazon", "tablet", {
+      modelCount: 9,
+      completedRepairs: 110,
+      compatibleParts: 38,
+      partsUsed: 340,
+      averageRepairTime: "3.7 days",
+    }),
   ],
   wearable: [
     {
       id: "apple",
       name: "Apple",
       category: "wearable",
-      logoSrc: "/brands/apple.svg",
       metrics: {
         modelCount: 12,
         completedRepairs: 186,
@@ -191,7 +311,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "samsung",
       name: "Samsung",
       category: "wearable",
-      logoSrc: "/brands/samsung.svg",
       metrics: {
         modelCount: 9,
         completedRepairs: 124,
@@ -204,7 +323,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "garmin",
       name: "Garmin",
       category: "wearable",
-      logoSrc: "/brands/garmin.svg",
       metrics: {
         modelCount: 7,
         completedRepairs: 68,
@@ -217,7 +335,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "huawei",
       name: "Huawei",
       category: "wearable",
-      logoSrc: "/brands/huawei.svg",
       metrics: {
         modelCount: 6,
         completedRepairs: 54,
@@ -226,13 +343,54 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "3.8 days",
       },
     },
+    mockBrand("fitbit", "Fitbit", "wearable", {
+      modelCount: 9,
+      completedRepairs: 92,
+      compatibleParts: 31,
+      partsUsed: 280,
+      averageRepairTime: "3.4 days",
+    }),
+    mockBrand("amazfit", "Amazfit", "wearable", {
+      modelCount: 11,
+      completedRepairs: 115,
+      compatibleParts: 37,
+      partsUsed: 345,
+      averageRepairTime: "3.6 days",
+    }),
+    mockBrand("xiaomi", "Xiaomi", "wearable", {
+      modelCount: 8,
+      completedRepairs: 84,
+      compatibleParts: 29,
+      partsUsed: 248,
+      averageRepairTime: "3.7 days",
+    }),
+    mockBrand("google", "Google", "wearable", {
+      modelCount: 5,
+      completedRepairs: 63,
+      compatibleParts: 22,
+      partsUsed: 180,
+      averageRepairTime: "3.5 days",
+    }),
+    mockBrand("fossil", "Fossil", "wearable", {
+      modelCount: 7,
+      completedRepairs: 59,
+      compatibleParts: 20,
+      partsUsed: 164,
+      averageRepairTime: "4.0 days",
+    }),
+    mockBrand("oneplus", "OnePlus", "wearable", {
+      modelCount: 4,
+      completedRepairs: 38,
+      compatibleParts: 15,
+      partsUsed: 102,
+      averageRepairTime: "3.8 days",
+    }),
   ],
   console: [
     {
       id: "sony",
       name: "Sony",
       category: "console",
-      logoSrc: "/brands/sony.svg",
       metrics: {
         modelCount: 8,
         completedRepairs: 198,
@@ -245,7 +403,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "nintendo",
       name: "Nintendo",
       category: "console",
-      logoSrc: "/brands/nintendo.svg",
       metrics: {
         modelCount: 7,
         completedRepairs: 156,
@@ -258,7 +415,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "microsoft",
       name: "Microsoft",
       category: "console",
-      logoSrc: "/brands/microsoft.svg",
       metrics: {
         modelCount: 4,
         completedRepairs: 112,
@@ -271,7 +427,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "steam",
       name: "Steam",
       category: "console",
-      logoSrc: "/brands/steam.svg",
       metrics: {
         modelCount: 2,
         completedRepairs: 26,
@@ -280,13 +435,54 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "4.6 days",
       },
     },
+    mockBrand("atari", "Atari", "console", {
+      modelCount: 3,
+      completedRepairs: 45,
+      compatibleParts: 16,
+      partsUsed: 112,
+      averageRepairTime: "4.4 days",
+    }),
+    mockBrand("sega", "SEGA", "console", {
+      modelCount: 4,
+      completedRepairs: 62,
+      compatibleParts: 21,
+      partsUsed: 158,
+      averageRepairTime: "4.1 days",
+    }),
+    mockBrand("razer", "Razer", "console", {
+      modelCount: 5,
+      completedRepairs: 88,
+      compatibleParts: 27,
+      partsUsed: 246,
+      averageRepairTime: "3.9 days",
+    }),
+    mockBrand("asus", "ASUS", "console", {
+      modelCount: 4,
+      completedRepairs: 51,
+      compatibleParts: 20,
+      partsUsed: 144,
+      averageRepairTime: "4.2 days",
+    }),
+    mockBrand("lenovo", "Lenovo", "console", {
+      modelCount: 3,
+      completedRepairs: 32,
+      compatibleParts: 14,
+      partsUsed: 90,
+      averageRepairTime: "4.3 days",
+    }),
+    mockBrand("logitech", "Logitech", "console", {
+      modelCount: 6,
+      completedRepairs: 96,
+      compatibleParts: 31,
+      partsUsed: 278,
+      averageRepairTime: "3.7 days",
+    }),
   ],
   other: [
     {
       id: "dji",
       name: "DJI",
       category: "other",
-      logoSrc: "/brands/dji.svg",
       metrics: {
         modelCount: 4,
         completedRepairs: 43,
@@ -299,7 +495,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "bose",
       name: "Bose",
       category: "other",
-      logoSrc: "/brands/bose.svg",
       metrics: {
         modelCount: 3,
         completedRepairs: 37,
@@ -312,7 +507,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "sony",
       name: "Sony",
       category: "other",
-      logoSrc: "/brands/sony.svg",
       metrics: {
         modelCount: 3,
         completedRepairs: 29,
@@ -325,7 +519,6 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
       id: "canon",
       name: "Canon",
       category: "other",
-      logoSrc: "/brands/canon.svg",
       metrics: {
         modelCount: 2,
         completedRepairs: 18,
@@ -334,5 +527,47 @@ export const BRANDS_BY_CATEGORY: Record<DeviceCategory, BrandMeta[]> = {
         averageRepairTime: "5.1 days",
       },
     },
+    mockBrand("jbl", "JBL", "other", {
+      modelCount: 10,
+      completedRepairs: 140,
+      compatibleParts: 45,
+      partsUsed: 420,
+      averageRepairTime: "3.6 days",
+    }),
+    mockBrand("gopro", "GoPro", "other", {
+      modelCount: 7,
+      completedRepairs: 96,
+      compatibleParts: 32,
+      partsUsed: 286,
+      averageRepairTime: "4.1 days",
+    }),
+    mockBrand("fujifilm", "Fujifilm", "other", {
+      modelCount: 8,
+      completedRepairs: 72,
+      compatibleParts: 28,
+      partsUsed: 195,
+      averageRepairTime: "4.6 days",
+    }),
+    mockBrand("nikon", "Nikon", "other", {
+      modelCount: 9,
+      completedRepairs: 81,
+      compatibleParts: 31,
+      partsUsed: 224,
+      averageRepairTime: "4.7 days",
+    }),
+    mockBrand("anker", "Anker", "other", {
+      modelCount: 12,
+      completedRepairs: 155,
+      compatibleParts: 49,
+      partsUsed: 474,
+      averageRepairTime: "3.5 days",
+    }),
+    mockBrand("logitech", "Logitech", "other", {
+      modelCount: 11,
+      completedRepairs: 122,
+      compatibleParts: 42,
+      partsUsed: 358,
+      averageRepairTime: "3.8 days",
+    }),
   ],
 }

@@ -191,13 +191,6 @@ const CATEGORY_ICON_MAP: Record<string, React.ReactNode> = {
 
 function SummaryContent() {
   const category = useWizardStore((s) => s.formData.category?.category)
-  const urgency = useWizardStore((s) => s.formData.category?.urgency)
-
-  const urgencyDotColor: Record<string, string> = {
-    standard: "bg-muted-foreground",
-    express: "bg-accent",
-    warranty: "bg-secondary",
-  }
 
   return (
     <div className="flex flex-col gap-4 pt-2">
@@ -217,24 +210,6 @@ function SummaryContent() {
           <span className="text-sm text-muted-foreground">—</span>
         )}
       </div>
-
-      {/* Urgency */}
-      {urgency && (
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">Urgency</span>
-          <div className="flex items-center gap-1.5">
-            <span
-              className={cn(
-                "inline-block size-2 rounded-full",
-                urgencyDotColor[urgency]
-              )}
-            />
-            <span className="text-sm font-medium text-foreground capitalize">
-              {urgency}
-            </span>
-          </div>
-        </div>
-      )}
 
       <Separator />
 

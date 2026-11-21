@@ -1,4 +1,16 @@
-import type { CategoryMeta } from "./types"
+import type { CategoryMeta, DeviceCategory } from "./types"
+
+export const CATEGORY_ICON_STYLES: Record<
+  DeviceCategory,
+  Pick<CategoryMeta, "iconBg" | "iconText">
+> = {
+  smartphone: { iconBg: "bg-primary/15", iconText: "text-primary" },
+  laptop: { iconBg: "bg-secondary/15", iconText: "text-secondary" },
+  tablet: { iconBg: "bg-accent/15", iconText: "text-accent-foreground" },
+  wearable: { iconBg: "bg-chart-5/15", iconText: "text-chart-5" },
+  console: { iconBg: "bg-destructive/10", iconText: "text-destructive" },
+  other: { iconBg: "bg-fuchsia-500/10", iconText: "text-muted-foreground" },
+}
 
 export const CATEGORIES: CategoryMeta[] = [
   {
@@ -9,8 +21,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "45 min",
     dailyIntakes: 23,
     tag: "Most Popular",
-    iconBg: "bg-primary/15",
-    iconText: "text-primary",
+    ...CATEGORY_ICON_STYLES.smartphone,
     popularBrands: ["Apple", "Samsung", "Xiaomi", "Oppo"],
     priceFrom: 80,
   },
@@ -22,8 +33,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "1 hr 20 min",
     dailyIntakes: 8,
     tag: null,
-    iconBg: "bg-secondary/15",
-    iconText: "text-secondary",
+    ...CATEGORY_ICON_STYLES.laptop,
     popularBrands: ["Apple", "Dell", "HP", "Lenovo"],
     priceFrom: 150,
   },
@@ -35,8 +45,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "55 min",
     dailyIntakes: 5,
     tag: "Trending",
-    iconBg: "bg-accent/15",
-    iconText: "text-accent-foreground",
+    ...CATEGORY_ICON_STYLES.tablet,
     popularBrands: ["Apple", "Samsung", "Huawei", "Xiaomi"],
     priceFrom: 120,
   },
@@ -48,8 +57,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "30 min",
     dailyIntakes: 3,
     tag: null,
-    iconBg: "bg-chart-5/15",
-    iconText: "text-chart-5",
+    ...CATEGORY_ICON_STYLES.wearable,
     popularBrands: ["Apple", "Samsung", "Garmin", "Huawei"],
     priceFrom: 60,
   },
@@ -61,8 +69,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "2 hr",
     dailyIntakes: 2,
     tag: "Last used",
-    iconBg: "bg-destructive/10",
-    iconText: "text-destructive",
+    ...CATEGORY_ICON_STYLES.console,
     popularBrands: ["Sony", "Nintendo", "Microsoft", "Steam"],
     priceFrom: 100,
   },
@@ -74,8 +81,7 @@ export const CATEGORIES: CategoryMeta[] = [
     avgRepairTime: "Varies",
     dailyIntakes: 1,
     tag: null,
-    iconBg: "bg-fuchsia-500/10",
-    iconText: "text-muted-foreground",
+    ...CATEGORY_ICON_STYLES.other,
     popularBrands: ["DJI", "Bose", "Sony", "Canon"],
     priceFrom: 50,
   },
